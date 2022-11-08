@@ -10,6 +10,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CardComponent } from './menu/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderManagementModule } from './order-management/order-management.module';
+import { CartItemLargeComponent } from './cart-item-large/cart-item-large.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { OrderManagementModule } from './order-management/order-management.modul
     CartComponent,
     ConfirmationComponent,
     CardComponent,
+    CartItemLargeComponent,
   ],
   imports: [
     BrowserModule,

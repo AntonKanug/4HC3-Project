@@ -1,1 +1,12 @@
-<p>cart works!</p>
+<h1>Cart</h1>
+
+<div>
+  <app-cart-item-large
+    *ngFor="let item of cartItems"
+    [CartItem] = item>
+  </app-cart-item-large>
+  <button (click)="increaseButtonHandler()"> {{ counter }}</button>
+</div>
+
+<div>
+</div>
