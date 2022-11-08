@@ -13,6 +13,7 @@ export interface MenuItem {
     tags?: [string],
     type?: FoodType,
     favourite?: boolean,
-    popular?: boolean
+    popular?: boolean,
+    count?: number
 }
 

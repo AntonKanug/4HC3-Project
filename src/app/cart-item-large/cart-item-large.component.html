@@ -1,8 +1,14 @@
-<div>
-  <h2>{{CartItem?.name}}</h2>
+<div *ngIf="CartItem; else cartEmpty">
+  <h2>{{CartItem?.name}}   x{{CartItem?.count}}</h2>
   <img src={{CartItem?.imageUrl}}>
   <p> {{CartItem?.description}}</p>
   <p> Price: ${{CartItem?.price}}</p>
   <p> {{CartItem?.calories}} Cal  </p>
-
+  <button (click)="decItemCount()"[disabled]="CartItem?.count==1">-</button>
+  {{CartItem?.count}}
+  <button (click)="incItemCount()"[disabled]="CartItem?.count==10">+</button>
+  <button (click)="delItem()">X</button>
 </div>
+<ng-template #cartEmpty>
+  <h1>Return to main menu</h1>
+</ng-template>
