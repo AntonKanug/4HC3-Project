@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { MenuItem } from '../../schemas/MenuItem';
+import { MenuItem } from '../../models/menu-item';
 
 @Component({
   selector: 'app-cart-item-large',

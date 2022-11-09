@@ -8,7 +8,7 @@
   </div>
   <div class="content">
     <div style="width: 30%; align-items: center;">
-      <img class="image" src="{{ item?.imageUrl }}" alt="{{item.name}} picture" />
+      <img class="image" src="{{ item.imageUrl }}" alt="{{item.name}} picture" />
       <div class="content">
         <button mat-raised-button class="quantity-button" (click)="decItemCount()"[disabled]="item?.count==1">-</button>
           <h2>{{ item?.count }}</h2>
