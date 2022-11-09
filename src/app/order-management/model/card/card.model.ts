@@ -5,6 +5,7 @@ export interface CardInterface {
   description: string;
   items: any;
   shouldBeDoneBy: Date;
+  timeToComplete: number;
 }
 
 export class Card implements CardInterface {
@@ -14,6 +15,7 @@ export class Card implements CardInterface {
     public summary: string,
     public description: string,
     public items: any,
-    public shouldBeDoneBy: Date
+    public shouldBeDoneBy: Date,
+    public timeToComplete: number
   ) {}
 }

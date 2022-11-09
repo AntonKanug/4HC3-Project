@@ -3,7 +3,8 @@
   (dragover)="allowCardDragToBeDropped($event)" style="border-radius: 10px">
   <mat-card-title style="font-size: 18px;">{{card.header}}</mat-card-title>
   <mat-selection-list>
-    <mat-list-option *ngFor="let item of card.items" style="height: 40px;">
+    <mat-list-option (click)="selChange(item)" *ngFor="let item of card.items" style="height: 40px;"
+      [selected]="item.selected">
       <div class="row">
         <div class="col-lg-1" style="padding-left: 0;">
           <mat-chip-list aria-label="Fish selection">
@@ -25,6 +26,7 @@
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
   </mat-card-actions> -->
-  <mat-progress-bar mode="determinate" value="{{(startTime - counter)/startTime * 100}}"></mat-progress-bar>
+  <mat-progress-bar mode="determinate" value="{{ (card.timeToComplete - counter)/card.timeToComplete * 100}}">
+  </mat-progress-bar>
 
 </mat-card>

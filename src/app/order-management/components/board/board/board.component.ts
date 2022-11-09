@@ -30,10 +30,11 @@ export class BoardComponent implements OnInit {
       'summary',
       'sample desc',
       [
-        { item: 'Apples', count: 1 },
-        { item: 'Apple Burger', count: 4 },
+        { item: 'Apples', count: 1, selected: false },
+        { item: 'Apple Burger', count: 4, selected: false },
       ],
-      d
+      d,
+      30
     );
     notStarted.cards.push(card);
     d = new Date();
@@ -44,11 +45,12 @@ export class BoardComponent implements OnInit {
       'summary',
       'sample desc',
       [
-        { item: 'Oranges', count: 2 },
-        { item: 'Pear Burger', count: 1 },
-        { item: 'Apple Fries', count: 4 },
+        { item: 'Oranges', count: 2, selected: false },
+        { item: 'Pear Burger', count: 1, selected: false },
+        { item: 'Apple Fries', count: 4, selected: false },
       ],
-      d
+      d,
+      60
     );
     notStarted.cards.push(card);
     notStarted.cards.push(card);

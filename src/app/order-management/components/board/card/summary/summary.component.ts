@@ -25,7 +25,6 @@ export class SummaryComponent implements OnInit {
       Math.ceil(
         (this.card.shouldBeDoneBy.getTime() - new Date().getTime()) / 60000
       ) + 1;
-    this.startTime = this.counter;
     this.countDown = timer(0, this.tick).subscribe(() => --this.counter);
   }
 
@@ -42,6 +41,10 @@ export class SummaryComponent implements OnInit {
   allowCardDragToBeDropped(dragEvent: DragEvent) {
     dragEvent.dataTransfer!.dropEffect = 'move';
     dragEvent.preventDefault();
+  }
+
+  selChange(item) {
+    item.selected = !item.selected;
   }
 }
 
