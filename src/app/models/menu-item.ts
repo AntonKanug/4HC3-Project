@@ -4,11 +4,19 @@ export interface MenuItem {
   description: string;
   imageUrl: string;
   calories: number;
-  tags: [string];
+  tags: [FoodTag];
   category: FoodCategory;
+  isPopular: boolean;
+  isFavorite: false;
+}
+
+export enum FoodTag {
+  Vegetarian = 'Vegetarian',
+  Halal = 'Halal',
 }
 
 export enum FoodCategory {
   Burger,
   Seafood,
+  Salad,
 }
