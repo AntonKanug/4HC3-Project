@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Component({
   selector: 'app-card-summary',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.css'],
+  styleUrls: ['./summary.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class SummaryComponent implements OnInit {
@@ -18,9 +18,16 @@ export class SummaryComponent implements OnInit {
   counter = 1800;
   tick = 60000; // min in ms = 60000
   startTime = 0;
+
+  timeCompleted = null;
+
   constructor() {}
 
   ngOnInit() {
+    if (this.listIndex >= 2) {
+      this.timeCompleted = this.card.shouldBeDoneBy;
+    }
+
     this.counter =
       Math.ceil(
         (this.card.shouldBeDoneBy.getTime() - new Date().getTime()) / 60000

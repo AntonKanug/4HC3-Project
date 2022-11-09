@@ -30,8 +30,8 @@ export class BoardComponent implements OnInit {
       'summary',
       'sample desc',
       [
-        { item: 'Apples', count: 1, selected: false },
-        { item: 'Apple Burger', count: 4, selected: false },
+        { item: 'Apple', count: 1, selected: false },
+        { item: 'Apple Burgers', count: 4, selected: false },
       ],
       d,
       30
@@ -46,7 +46,7 @@ export class BoardComponent implements OnInit {
       'sample desc',
       [
         { item: 'Oranges', count: 2, selected: false },
-        { item: 'Pear Burger', count: 1, selected: false },
+        { item: 'Pear Burgers', count: 1, selected: false },
         { item: 'Apple Fries', count: 4, selected: false },
       ],
       d,

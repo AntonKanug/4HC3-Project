@@ -46,7 +46,11 @@ import { CardComponent } from './menu/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderManagementModule } from './order-management/order-management.module';
 
-import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {
+  APP_BASE_HREF,
+  LocationStrategy,
+  HashLocationStrategy,
+} from '@angular/common';
 
 @NgModule({
   declarations: [

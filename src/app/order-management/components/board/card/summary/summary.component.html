@@ -7,11 +7,11 @@
       [selected]="item.selected">
       <div class="row">
         <div class="col-lg-1" style="padding-left: 0;">
-          <mat-chip-list aria-label="Fish selection">
+          <mat-chip-list [style.opacity]="item.selected ?'0.4' : '1' ">
             <mat-chip>{{item.count}}</mat-chip>
           </mat-chip-list>
         </div>
-        <div class="col" style="padding-top: 7px; padding-left: 20px;">
+        <div class="col" style="padding-top: 7px; padding-left: 20px;" [style.opacity]="item.selected ?'0.4' : '1' ">
           {{item.item}}
         </div>
 
@@ -19,14 +19,23 @@
     </mat-list-option>
   </mat-selection-list>
 
-  <mat-card-subtitle style="padding-top: 20px">Time left: {{counter }} mins </mat-card-subtitle>
+
+  <mat-card-subtitle *ngIf="!timeCompleted" style="padding-top: 20px">Time left: {{counter }} mins </mat-card-subtitle>
+  <mat-card-subtitle *ngIf="timeCompleted" style="padding-top: 20px">Time completed:
+    {{ timeCompleted |  date:'shortTime' }}
+  </mat-card-subtitle>
 
 
   <!-- <mat-card-actions>
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
   </mat-card-actions> -->
-  <mat-progress-bar mode="determinate" value="{{ (card.timeToComplete - counter)/card.timeToComplete * 100}}">
+  <mat-progress-bar [class]="  
+     counter <= 0 ? 'red-c' :
+    (card.timeToComplete - counter)/card.timeToComplete * 100 < 50 ? 'blue-c' :  
+    (card.timeToComplete - counter)/card.timeToComplete * 100 < 75 ? 'yellow-c': 
+    (card.timeToComplete - counter)/card.timeToComplete * 100 < 100 ? 'orange-c':  '' " mode="determinate"
+    value="{{ timeCompleted ? 100: (card.timeToComplete - counter)/card.timeToComplete * 100}}">
   </mat-progress-bar>
 
 </mat-card>
