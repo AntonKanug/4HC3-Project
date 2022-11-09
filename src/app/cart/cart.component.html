@@ -1,14 +1,28 @@
 <h1>Cart</h1>
 
-<div>
-  <app-cart-item-large
-    *ngFor="let item of cartItems"
-    [CartItem] = item>
-  </app-cart-item-large>
-  <button (click)="increaseButtonHandler()"> {{ counter }}</button>
-</div>
+<!-- Items -->
+<div class="float-container">
+  <div class="float-child">
+    <app-cart-item-large
+      *ngFor="let item of cartItems; index as i"
+      [CartItem] = item
+        [index] = i
+        (itemToDelete) = removeCartItem($event)>
+    </app-cart-item-large>
+    <div *ngIf="cartItems.length == 0">
+      <h2>Cart Empty</h2>
+    </div>
+  </div>
 
-<!-- <div>
-  <h2>Total</h2>
-  <h3>{{CartItem?.name}}</h3>
-</div> -->
+  <!-- Payment and Subtotal -->
+  <div>
+    <h1>Payment</h1>
+    <div *ngFor="let item of cartItems">
+
+    </div>
+  </div>
+
+
+
+
+</div>

@@ -22,5 +22,14 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  checkTrue(): boolean{
+    console.log(this.cartItems)
+    return true
+  }
+
+  removeCartItem(index:number){
+    console.log(index)
+    this.cartItems.splice(index,1)
+  }
 
 }
