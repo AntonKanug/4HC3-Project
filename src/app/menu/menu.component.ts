@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
 
 @Component({
@@ -7,7 +8,8 @@ import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  items: MenuItem[] = [
+  foodCategories = Object.values(FoodCategory);
+  allItems: MenuItem[] = [
     {
       name: 'Shiba Inu',
       price: 99.99,
@@ -33,8 +35,29 @@ export class MenuComponent implements OnInit {
       isFavorite: false,
     },
   ];
+  currentItems: MenuItem[] = this.allItems;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onChangeTab(event: MatTabChangeEvent): void {
+    switch (event.tab.textLabel) {
+      case 'All':
+        this.currentItems = this.allItems;
+        return;
+      case 'Favourites':
+        this.currentItems = this.allItems.filter((item) => item.isFavorite);
+        return;
+      case 'Popular':
+        this.currentItems = this.allItems.filter((item) => item.isPopular);
+        return;
+      default:
+        const category = event.tab.textLabel as FoodCategory;
+        this.currentItems = this.allItems.filter(
+          (item) => item.category === category
+        );
+        break;
+    }
+  }
 }

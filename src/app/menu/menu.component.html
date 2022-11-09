@@ -1,6 +1,15 @@
 <div>
+  <mat-tab-group (selectedTabChange)="onChangeTab($event)">
+    <mat-tab label="All"></mat-tab>
+    <mat-tab label="Favourites"></mat-tab>
+    <mat-tab label="Popular"></mat-tab>
+    <mat-tab
+      *ngFor="let category of foodCategories"
+      label="{{ category }}"
+    ></mat-tab>
+  </mat-tab-group>
   <mat-grid-list cols="4" rowHeight="700px">
-    <mat-grid-tile *ngFor="let item of items">
+    <mat-grid-tile *ngFor="let item of currentItems">
       <app-card [item]="item"></app-card>
     </mat-grid-tile>
   </mat-grid-list>
