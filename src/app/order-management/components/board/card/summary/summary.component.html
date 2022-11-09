@@ -4,14 +4,15 @@
   <mat-card-title style="font-size: 18px;">{{card.header}}</mat-card-title>
   <mat-selection-list>
     <mat-list-option (click)="selChange(item)" *ngFor="let item of card.items" style="height: 40px;"
-      [selected]="item.selected">
+      [selected]="item.selected" [disabled]="timeCompleted">
       <div class="row">
         <div class="col-lg-1" style="padding-left: 0;">
           <mat-chip-list [style.opacity]="item.selected ?'0.4' : '1' ">
             <mat-chip>{{item.count}}</mat-chip>
           </mat-chip-list>
         </div>
-        <div class="col" style="padding-top: 7px; padding-left: 20px;" [style.opacity]="item.selected ?'0.4' : '1' ">
+        <div class="col" style="padding-top: 7px; padding-left: 20px;"
+          [style.opacity]="item.selected && !timeCompleted ?'0.4' : '1' ">
           {{item.item}}
         </div>
 
