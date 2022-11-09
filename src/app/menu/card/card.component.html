@@ -1,1 +1,49 @@
-<p>card works!</p>
+<mat-card class="example-card">
+  <div class="spaced-row">
+    <mat-chip-list>
+      <mat-chip> 200 Cal </mat-chip>
+    </mat-chip-list>
+    <button
+      mat-icon-button
+      color="warn"
+      aria-label="Button to favorite the item"
+    >
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+  <img
+    mat-card-image
+    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    alt="Photo of a Shiba Inu"
+  />
+  <div class="spaced-row">
+    <h2 class="mat-h2">Shiba Inu</h2>
+    <h2 class="mat-h2" style="color: #f44336">$9.99</h2>
+  </div>
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz
+      breeds of dog from Japan. A small, agile dog that copes very well with
+      mountainous terrain, the Shiba Inu was originally bred for hunting.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-form-field class="end-row">
+      <input
+        type="number"
+        class="form-control"
+        matInput
+        name="item-amount"
+        placeholder="Amount"
+        value="1"
+        formControlName="item-amount"
+      />
+    </mat-form-field>
+    <div class="spaced-row">
+      <mat-chip-list>
+        <mat-chip color="accent" selected> Vegetarian </mat-chip>
+      </mat-chip-list>
+      <button mat-raised-button color="primary">Add</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
