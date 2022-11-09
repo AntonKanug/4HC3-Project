@@ -1,10 +1,9 @@
-<div class="list  list-drag-component" (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)"
-  id="list-{{listIndex}}">
-  <app-context-menu (contextAction)="delete()"></app-context-menu>
-  <p class="list-name" [(appContentEdit)]="list.name"></p>
+<div class="list list-drag-component" (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)"
+  id="list-{{listIndex}}" style="margin-top: 15px; border-radius: 10px;">
+  <mat-card-title class=" list-name" style="padding-top: 10px; font-size: 20px">{{list.name}} </mat-card-title>
 
   <!-- List Card Starts -->
-  <div id="list-one">
+  <div class="list-one" style="overflow:auto;">
     <app-card-summary *ngFor="let card of this.list.cards;let i = index" [card]="card" [listIndex]="listIndex"
       [cardIndex]="i" attr.cardIndex="{{i}}"></app-card-summary>
   </div>

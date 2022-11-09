@@ -1,20 +1,19 @@
 .card {
   margin-bottom: 10px;
-  width: 230px;
-  max-height: 150px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  margin: 15px 15px 15px;
 }
 
 .card-title {
   font-size: 12px;
-  margin-bottom: .35rem;  
+  margin-bottom: .35rem;
 }
-
 
 
 .card-body {
   max-height: 160px;
 }
+
 p.card-text {
   max-height: 65px;
   overflow-y: hidden;
@@ -22,6 +21,19 @@ p.card-text {
   font-size: 10px;
   width: 200px;
 }
+
 .text-muted {
   font-size: 10px;
+}
+
+.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate {
+  background: rgb(41, 196, 75);
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content-reverse,
+.mat-list-base .mat-list-option .mat-list-item-content-reverse {
+  padding: 0 16px 0 0 !important;
 }

@@ -1,6 +1,30 @@
-<div class="card" [draggable]="'true'" (dragstart)="identifyCardBeingDragged($event)"  id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}" (dragover)="allowCardDragToBeDropped($event)" >
-  <div class="card-body">
-    <h4 class="card-title" [(appContentEdit)]="card.header" [draggable]="'false'" >  </h4>
-    <h6 class="text-muted card-subtitle mb-2" [(appContentEdit)]="card.summary" [draggable]="'false'" ></h6>
-  </div>
-</div>
+<mat-card class="card" [draggable]="true" (dragstart)="identifyCardBeingDragged($event)"
+  id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}"
+  (dragover)="allowCardDragToBeDropped($event)" style="border-radius: 10px">
+  <mat-card-title style="font-size: 18px;">{{card.header}}</mat-card-title>
+  <mat-selection-list>
+    <mat-list-option *ngFor="let item of card.items" style="height: 40px;">
+      <div class="row">
+        <div class="col-lg-1" style="padding-left: 0;">
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip>{{item.count}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="col" style="padding-top: 7px; padding-left: 20px;">
+          {{item.item}}
+        </div>
+
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+
+  <mat-card-subtitle style="padding-top: 20px">Time left: {{counter }} mins </mat-card-subtitle>
+
+
+  <!-- <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions> -->
+  <mat-progress-bar mode="determinate" value="{{(startTime - counter)/startTime * 100}}"></mat-progress-bar>
+
+</mat-card>

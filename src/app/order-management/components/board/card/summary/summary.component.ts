@@ -1,19 +1,33 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Card } from '../../../../model/card/card.model';
+import { timer, Subscription } from 'rxjs';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Component({
   selector: 'app-card-summary',
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SummaryComponent implements OnInit {
   @Input() card!: Card;
   @Input() listIndex!: number;
   @Input() cardIndex!: number;
 
+  countDown: Subscription;
+  counter = 1800;
+  tick = 1000; // min in ms = 60000
+  startTime = 0;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.counter =
+      Math.ceil(
+        (this.card.shouldBeDoneBy.getTime() - new Date().getTime()) / 60000
+      ) + 1;
+    this.startTime = this.counter;
+    this.countDown = timer(0, this.tick).subscribe(() => --this.counter);
+  }
 
   identifyCardBeingDragged(dragEvent: DragEvent) {
     dragEvent.dataTransfer!.effectAllowed = 'move';
@@ -28,5 +42,19 @@ export class SummaryComponent implements OnInit {
   allowCardDragToBeDropped(dragEvent: DragEvent) {
     dragEvent.dataTransfer!.dropEffect = 'move';
     dragEvent.preventDefault();
+  }
+}
+
+@Pipe({
+  name: 'formatTime',
+})
+export class FormatTimePipe implements PipeTransform {
+  transform(value: number): string {
+    const minutes: number = Math.floor(value / 60);
+    return (
+      ('00' + minutes).slice(-2) +
+      ':' +
+      ('00' + Math.floor(value - minutes * 60)).slice(-2)
+    );
   }
 }

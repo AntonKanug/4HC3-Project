@@ -22,7 +22,45 @@ export class BoardComponent implements OnInit {
     notStarted.position = 0;
     notStarted.name = 'Not Started';
 
-    const card = new Card('22', 'header', 'summary', 'sample desc');
+    let d = new Date();
+    d.setMinutes(d.getMinutes() + 30);
+    let card = new Card(
+      '1',
+      'Order #123',
+      'summary',
+      'sample desc',
+      [
+        { item: 'Apples', count: 1 },
+        { item: 'Apple Burger', count: 4 },
+      ],
+      d
+    );
+    notStarted.cards.push(card);
+    d = new Date();
+    d.setMinutes(d.getMinutes() + 60);
+    card = new Card(
+      '2',
+      'Order #234',
+      'summary',
+      'sample desc',
+      [
+        { item: 'Oranges', count: 2 },
+        { item: 'Pear Burger', count: 1 },
+        { item: 'Apple Fries', count: 4 },
+      ],
+      d
+    );
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
     notStarted.cards.push(card);
 
     const inProg: ListInterface = new List();
