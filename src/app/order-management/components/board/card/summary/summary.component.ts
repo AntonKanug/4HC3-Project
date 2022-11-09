@@ -16,7 +16,7 @@ export class SummaryComponent implements OnInit {
 
   countDown: Subscription;
   counter = 1800;
-  tick = 1000; // min in ms = 60000
+  tick = 60000; // min in ms = 60000
   startTime = 0;
   constructor() {}
 
