@@ -1,1 +1,48 @@
-<p>card works!</p>
+<mat-card class="menu-card">
+  <div class="spaced-row">
+    <mat-chip-list>
+      <mat-chip> {{ item.calories }} Cal </mat-chip>
+    </mat-chip-list>
+    <button
+      (click)="toggleFavourite()"
+      mat-icon-button
+      color="accent"
+      aria-label="Button to favorite this menu item"
+    >
+      <mat-icon class="star-icon">{{
+        item.isFavorite ? "star" : "star_border"
+      }}</mat-icon>
+    </button>
+  </div>
+  <img mat-card-image src="{{ item.imageUrl }}" alt="Photo of the menu item" />
+  <div class="spaced-row">
+    <h2 class="mat-h2">{{ item.name }}</h2>
+    <h2 class="mat-h2" style="color: #f44336">${{ item.price }}</h2>
+  </div>
+  <mat-card-content>
+    <p>
+      {{ item.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-form-field class="end-row">
+      <input
+        type="number"
+        class="form-control"
+        matInput
+        name="item-amount"
+        placeholder="Amount"
+        value="1"
+        formControlName="item-amount"
+      />
+    </mat-form-field>
+    <div class="spaced-row">
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of item.tags" color="accent" selected>
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-list>
+      <button mat-raised-button color="primary">Add</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
