@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { MenuItem } from 'src/app/models/menu-item';
 
@@ -9,8 +9,14 @@ import { MenuItem } from 'src/app/models/menu-item';
 })
 export class CardComponent implements OnInit {
   @Input() item: MenuItem;
+  @Output() onFavourite: EventEmitter<MenuItem> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  toggleFavourite() {
+    this.item.isFavorite = !this.item.isFavorite;
+    this.onFavourite.emit(this.item);
+  }
 }

@@ -10,7 +10,7 @@
   </mat-tab-group>
   <mat-grid-list cols="4" rowHeight="700px">
     <mat-grid-tile *ngFor="let item of currentItems">
-      <app-card [item]="item"></app-card>
+      <app-card [item]="item" (onFavourite)="toggleFavourite($event)"></app-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

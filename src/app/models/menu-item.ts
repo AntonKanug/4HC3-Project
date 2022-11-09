@@ -7,7 +7,7 @@ export interface MenuItem {
   tags: [FoodTag];
   category: FoodCategory;
   isPopular: boolean;
-  isFavorite: false;
+  isFavorite: boolean;
 }
 
 export enum FoodTag {

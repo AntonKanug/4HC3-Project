@@ -36,13 +36,23 @@ export class MenuComponent implements OnInit {
     },
   ];
   currentItems: MenuItem[] = this.allItems;
+  curTabLabel = 'All';
 
   constructor() {}
 
   ngOnInit(): void {}
 
   onChangeTab(event: MatTabChangeEvent): void {
-    switch (event.tab.textLabel) {
+    this.curTabLabel = event.tab.textLabel;
+    this.filterItems();
+  }
+
+  toggleFavourite(item: MenuItem): void {
+    this.filterItems();
+  }
+
+  filterItems() {
+    switch (this.curTabLabel) {
       case 'All':
         this.currentItems = this.allItems;
         return;
@@ -53,11 +63,10 @@ export class MenuComponent implements OnInit {
         this.currentItems = this.allItems.filter((item) => item.isPopular);
         return;
       default:
-        const category = event.tab.textLabel as FoodCategory;
+        const category = this.curTabLabel as FoodCategory;
         this.currentItems = this.allItems.filter(
           (item) => item.category === category
         );
-        break;
     }
   }
 }
