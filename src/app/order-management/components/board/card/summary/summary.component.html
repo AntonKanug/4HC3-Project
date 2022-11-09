@@ -1,4 +1,4 @@
-<mat-card class="card" [draggable]="true" (dragstart)="identifyCardBeingDragged($event)"
+<mat-card class="card" draggable="true" (dragstart)="identifyCardBeingDragged($event)"
   id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}"
   (dragover)="allowCardDragToBeDropped($event)" style="border-radius: 10px">
   <mat-card-title style="font-size: 18px;">{{card.header}}</mat-card-title>

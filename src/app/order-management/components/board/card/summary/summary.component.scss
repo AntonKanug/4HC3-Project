@@ -4,6 +4,14 @@
   margin: 15px 15px 15px;
 }
 
+.card:hover {
+  cursor: grab;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
 .card-title {
   font-size: 12px;
   margin-bottom: .35rem;
