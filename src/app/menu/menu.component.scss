@@ -19,6 +19,7 @@
     align-items: center;
     text-decoration: none;
     color: inherit;
+    cursor: default; // TEMPORARY, until link acc does something
 
     .logo-image {
         max-height: 100%;
