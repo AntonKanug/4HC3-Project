@@ -1,6 +1,8 @@
 <mat-toolbar class="navbar" color="primary">
-  <img class="logo-image" src="/assets/apple-white-transparent.png">
-  <span class="logo-text">Apple <br> Factory</span>
+  <a class="logo" [routerLink]="['/']">
+    <img class="logo-image" src="/assets/apple-white-transparent.png">
+    <span class="logo-text">Apple <br> Factory</span>
+  </a>
   <span class="spacer"></span>
   <div class="cart">
     <button mat-icon-button>
