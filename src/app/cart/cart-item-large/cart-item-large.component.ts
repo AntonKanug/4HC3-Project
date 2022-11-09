@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { MenuItem } from '../schemas/MenuItem';
+import { MenuItem } from '../../schemas/MenuItem';
 
 @Component({
   selector: 'app-cart-item-large',
@@ -7,7 +7,7 @@ import { MenuItem } from '../schemas/MenuItem';
   styleUrls: ['./cart-item-large.component.scss'],
 })
 export class CartItemLargeComponent implements OnInit {
-  @Input() CartItem: MenuItem | undefined;
+  @Input() item: MenuItem | undefined;
   @Input() index: number | undefined;
 
   @Output() itemToDelete = new EventEmitter();
@@ -21,13 +21,13 @@ export class CartItemLargeComponent implements OnInit {
   }
 
   incItemCount() {
-    if (this.CartItem?.count && this.CartItem.count < 10) {
-      this.CartItem!.count += 1;
+    if (this.item?.count && this.item.count < 10) {
+      this.item!.count += 1;
     }
   }
   decItemCount() {
-    if (this.CartItem?.count && this.CartItem.count > 1) {
-      this.CartItem!.count -= 1;
+    if (this.item?.count && this.item.count > 1) {
+      this.item!.count -= 1;
     }
   }
 }

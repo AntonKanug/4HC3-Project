@@ -1,0 +1,30 @@
+<mat-card>
+  <div class="title-bar">
+    <mat-card-title class="title">{{item.name}}</mat-card-title>
+    <button mat-mini-fab class="delete-button" (click)="delItem()">X</button>
+  </div>
+  <div style="padding-left: 10px;">
+    <mat-chip> {{ item.calories }} Cal </mat-chip>
+  </div>
+  <div class="content">
+    <div style="width: 30%; align-items: center;">
+      <img class="image" src="{{ item?.imageUrl }}" alt="{{item.name}} picture" />
+      <div class="content">
+        <button mat-raised-button class="quantity-button" (click)="decItemCount()"[disabled]="item?.count==1">-</button>
+          <h2>{{ item?.count }}</h2>
+        <button mat-raised-button class="quantity-button" (click)="incItemCount()"[disabled]="item?.count==10">+</button>
+      </div>
+    </div>
+    <div style="width: 63%; position: relative;">
+      <mat-card-content>
+        <p> {{item?.description}}</p>
+      </mat-card-content>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of item.tags" color="accent" selected>
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-list>
+      <h2 style="position: absolute; bottom: 0; right: 0; padding-right: 10px;" >${{ item.price }}</h2>
+    </div>
+  </div>
+</mat-card>

@@ -45,7 +45,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CardComponent } from './menu/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderManagementModule } from './order-management/order-management.module';
-import { CartItemLargeComponent } from './cart-item-large/cart-item-large.component';
+import { CartItemLargeComponent } from './cart/cart-item-large/cart-item-large.component';
 
 @NgModule({
   declarations: [

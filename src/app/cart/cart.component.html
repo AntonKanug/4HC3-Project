@@ -5,9 +5,9 @@
   <div class="float-child">
     <app-cart-item-large
       *ngFor="let item of cartItems; index as i"
-      [CartItem] = item
-        [index] = i
-        (itemToDelete) = removeCartItem($event)>
+      [item] = item
+      [index] = i
+      (itemToDelete) = removeCartItem($event)>
     </app-cart-item-large>
     <div *ngIf="cartItems.length == 0">
       <h2>Cart Empty</h2>
