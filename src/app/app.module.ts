@@ -35,6 +35,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +46,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CardComponent } from './menu/card/card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderManagementModule } from './order-management/order-management.module';
+import { CartItemLargeComponent } from './cart/cart-item-large/cart-item-large.component';
 
 import {
   APP_BASE_HREF,
@@ -60,6 +62,7 @@ import {
     CartComponent,
     ConfirmationComponent,
     CardComponent,
+    CartItemLargeComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +104,8 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },

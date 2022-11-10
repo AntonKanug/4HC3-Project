@@ -1,0 +1,165 @@
+.navbar {
+  padding: 0 32px;
+}
+
+
+.cart {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: default; // TEMPORARY, until link acc does something
+
+  .logo-image {
+      max-height: 100%;
+      padding: 10px;
+  }
+
+  .logo-text {
+      line-height: 1.4rem;
+  }
+}
+
+
+
+
+
+
+.body {
+  border: 3px solid #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.items {
+  width: 45%;
+  float: left;
+  padding: 20px;
+}
+
+.header {
+  font-size: xx-large;
+  font-weight: 450;
+}
+
+.title-bar {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid black 4px;
+}
+
+.shopping-icon {
+  font-size: 100px;
+  height: 135px;
+  width: 100px;
+}
+
+.delivery-payment {
+  width: 30%;
+  min-width: 250px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment {
+  // padding-top: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.full-width {
+  width: 100%;
+  min-width: unset!important;
+  min-width: none;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.dual-input-row-left {
+  padding-left: 12px;
+  padding-right:1px;
+  width: 50%;
+}
+
+.dual-input-row-right {
+  padding-left: 1px;
+  padding-right:12px;
+  width: 50%;
+}
+
+.triple-input-row-left {
+  padding-left: 12px;
+  padding-right:1px;
+  width: 36%;
+}
+
+.triple-input-row-mid {
+  padding-left: 1px;
+  padding-right: 1px;
+  width: 36%;
+}
+
+.triple-input-row-right {
+  padding-left: 1px;
+  padding-right:12px;
+  width: 28%;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.continue-shopping-button {
+  width: 250px!important;
+  min-width: unset!important;
+  height: 40%;
+  font-size: large;
+}
+
+.checkout-button {
+  width: 100%!important;
+  min-width: unset!important;
+  height: 35px;
+  font-size: large;
+}
+
+
+.total-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.summary-font {
+  font-size: large;
+  font-weight: 400;
+}
+
+.total-font {
+  font-size: x-large;
+  font-weight: 600;
+}

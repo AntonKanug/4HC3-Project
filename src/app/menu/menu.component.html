@@ -5,10 +5,35 @@
   </a>
   <span class="spacer"></span>
   <div class="cart">
-    <button mat-icon-button>
+    <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
     <span>0</span>
+    <mat-menu class="cart-modal" #cartDropDown="matMenu" xPosition="before">
+      <div style="padding-bottom: 10px">
+        <div class="centered" style="width: 100%;padding-bottom:5px; padding-top:10px; border-bottom: solid black 2px;">
+        <div class="cart-title" >Cart</div>
+        </div>
+        <div  class="centered">
+          <div *ngFor="let item of allItems; index as i" class="cart-entry">
+            <div style="padding-bottom: 5px;">
+              <div style="display: flex; flex-direction: row; ">
+                <p style="font-size: large; font-weight: 400;">{{item.name}} </p>
+                <p style="font-size: medium; font-weight: 600; padding-left: 3px;">x {{item.count}}</p>
+              </div>
+              <img style="width: 40%; height: auto;"src="{{item.imageUrl}}">
+            </div>
+            <div style="justify-content:center; position: relative;">
+              <p style="font-size: large; font-weight:600">${{(item.price * item.count).toFixed(2)}}</p>
+              <div style="position:absolute;bottom:0; right:0; padding-right:5px; padding-bottom: 5px;">
+                <button (click) = "$event.stopPropagation();removeItemFromCart()" mat-mini-fab class="delete-button">X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="centered" style="font-size: large;font-weight: 450;background-color: #FFD740; border-radius: 5px; padding: 5px;" [routerLink]="['/cart']" mat-menu-item>Go to Cart</button>
+    </mat-menu>
   </div>
 
 </mat-toolbar>

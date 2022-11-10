@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
       imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
       isPopular: true,
       isFavorite: false,
+      count: 3
     },
     {
       name: 'Apple Bowl',
@@ -33,6 +34,7 @@ export class MenuComponent implements OnInit {
         'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
       isPopular: false,
       isFavorite: false,
+      count: 8,
     },
   ];
   currentItems: MenuItem[] = this.allItems;
@@ -68,5 +70,9 @@ export class MenuComponent implements OnInit {
           (item) => item.category === category
         );
     }
+  }
+
+  removeItemFromCart(){
+    console.log("i should remove an item from the cart")
   }
 }

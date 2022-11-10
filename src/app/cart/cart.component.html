@@ -1,1 +1,119 @@
-<p>cart works!</p>
+<mat-toolbar class="navbar" color="primary">
+  <a class="logo" [routerLink]="['/']">
+    <img class="logo-image" src="/assets/apple-white-transparent.png">
+    <span class="logo-text">Apple <br> Factory</span>
+  </a>
+  <span class="spacer"></span>
+  <div class="cart">
+    <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
+      <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
+    </button>
+    <span>{{cartItems.length}}</span>
+    <mat-menu class="cart-modal" style="background-color:#FFD740" #cartDropDown="matMenu" yPosition="below">
+      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']" mat-menu-item>Continue Shopping</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<div class="title-bar">
+  <mat-icon class="shopping-icon" aria-hidden="false" aria-label="Cart">shopping_basket</mat-icon>
+  <h1 style="font-weight: 500;font-size: 32pt; padding-left: 20px;">My Shopping Cart</h1>
+</div>
+
+<!-- Items -->
+<div class="body">
+  <div class="items" style="display:flex; flex-direction: column;">
+    <div style="padding-top: 16px ;border-bottom: solid black 2px; display: flex; flex-direction: row;justify-content: center; align-items: center;">
+      <h1 class="header">Items</h1>
+    </div>
+    <app-cart-item-large
+      *ngFor="let item of cartItems; index as i"
+      [item] = item
+      [index] = i
+      (itemToDelete) = removeCartItem($event)
+      class="item-card">
+    </app-cart-item-large>
+    <div *ngIf="cartItems.length == 0">
+      <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <h1 style="padding-top: 20%; font-weight: bold;">Cart Empty</h1>
+        <button mat-raised-button class="continue-shopping-button" color="primary" [routerLink]="['/']">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment and Subtotal -->
+  <div class="delivery-payment">
+    <mat-card>
+        <div [ngStyle]="{'border-bottom': deliveryChecked ? 'solid black 2px' : '' }" style="display: flex; flex-direction: row; justify-content: space-between;">
+          <h1 class="header" style="align-self:center">Delivery</h1>
+          <mat-slide-toggle style="padding-top: 4px;"[(ngModel)]="deliveryChecked" [checked]="deliveryChecked"></mat-slide-toggle>
+        </div>
+      <div style="padding-top:5px" *ngIf=deliveryChecked>
+        Please fill out the form with your delivery details, * fields are required.
+        <div [formGroup]="deliveryForm">
+          <div class="row">
+            <mat-form-field class="dual-input-row-left" appearance="outline">
+              <mat-label>First name</mat-label>
+              <input formControlName="firstName" matInput required placeholder="Eg. William">
+            </mat-form-field>
+            <mat-form-field class="dual-input-row-right" appearance="outline">
+              <mat-label>Last name</mat-label>
+              <input formControlName="lastName" matInput required placeholder="Eg. McMaster">
+            </mat-form-field>
+          </div>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input formControlName="email" matInput required placeholder="Eg. william@mail.com">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input formControlName="address" matInput required placeholder="Eg. 1280 Main St West">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Address 2</mat-label>
+            <input formControlName="address2" matInput placeholder="Eg. 1280 King St West">
+          </mat-form-field>
+          <div class="row">
+            <mat-form-field class="triple-input-row-left" appearance="outline">
+              <mat-label>City</mat-label>
+              <input formControlName="city" matInput required placeholder="Eg. Hamilton">
+            </mat-form-field>
+            <mat-form-field class="triple-input-row-mid" appearance="outline">
+              <mat-label>Province</mat-label>
+              <input formControlName="province" matInput required placeholder="Eg. Ontario">
+            </mat-form-field>
+            <mat-form-field class="triple-input-row-right" appearance="outline">
+              <mat-label>Postal Code</mat-label>
+              <input formControlName="postalCode" matInput required #postalCode maxlength="7" placeholder="Eg. L8S 4L8">
+              <mat-hint align="end">{{postalCode.value.length}} / 7</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <h2>Location</h2>
+          <img class="map" src="../../assets/images/map.png">
+        </div>
+      </div>
+    </mat-card>
+    <mat-card class="payment">
+      <div style="border-bottom: solid black 2px">
+        <h1 class="header">Order Summary</h1>
+      </div>
+      <div class="total-row" style="padding-top:15px">
+        <h2 class="summary-font">Subtotal:</h2>
+        <h2 class="summary-font">$ {{getCartTotal()}}</h2>
+      </div>
+      <div *ngIf="deliveryChecked" class="total-row">
+        <h2 class="summary-font">Delivery:</h2>
+        <h2 class="summary-font">$ {{deliveryCost}}</h2>
+      </div>
+      <div class="total-row" style="border-top: solid black 2px; padding-top: 10%;">
+        <h2 class="total-font">Total:</h2>
+        <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
+      </div>
+      <div style="padding-top: 15px">
+        <button (click)="onSubmit()" [routerLink]="['/checkout']" mat-raised-button class="checkout-button" color="accent" >Checkout</button>
+      </div>
+    </mat-card>
+  </div>
+</div>
