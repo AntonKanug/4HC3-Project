@@ -1,6 +1,6 @@
 <div class="container board" style="max-width:inherit;height:100%;">
-  <div class="row">
-    <div class="col-lg-3" *ngFor="let list of lists;let i = index">
+  <div class="row" style="padding-left: 10px">
+    <div class="col-lg-3" *ngFor="let list of lists;let i = index" style="padding-left:5px">
       <app-list class="col-lg-3" [list]="list" [listIndex]="i" (moveCardAcrossList)="moveCardAcrossList($event)"
         attr.listIndex="{{i}}">
       </app-list>

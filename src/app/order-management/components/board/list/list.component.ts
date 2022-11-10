@@ -36,14 +36,14 @@ export class ListComponent implements OnInit {
   ngOnInit() {}
 
   addNewCard() {
-    const card = new Card(
-      this.cardCount++ + '',
-      'header' + this.cardCount,
-      'summary' + this.cardCount,
-      'sample desc'
-    );
-    this.list!.cards.push(card);
-    this.newCardAdded.emit(card);
+    // const card = new Card(
+    //   this.cardCount++ + '',
+    //   'header' + this.cardCount,
+    //   'summary' + this.cardCount,
+    //   'sample desc'
+    // );
+    // this.list!.cards.push(card);
+    // this.newCardAdded.emit(card);
   }
 
   allowCardReplacement(dragEvent: DragEvent) {

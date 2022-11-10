@@ -1,20 +1,25 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit, ViewEncapsulation } from '@angular/core';
 import { List, ListInterface } from '../../../model/list/list.model';
 import { MovementIntf } from '../../../model/card/movement';
 import { BoardService } from '../../../service/board/board-service';
 import { BoardModel } from '../../../model/board/board.model';
 import { LocalService } from '../../../service/board/local/local.service';
 import { Card } from 'src/app/order-management/model/card/card.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class BoardComponent implements OnInit {
   lists: ListInterface[] = [];
 
-  constructor(private localService: LocalService) {}
+  constructor(
+    private localService: LocalService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     const board = this.localService.getBoard();
@@ -22,7 +27,47 @@ export class BoardComponent implements OnInit {
     notStarted.position = 0;
     notStarted.name = 'Not Started';
 
-    const card = new Card('22', 'header', 'summary', 'sample desc');
+    let d = new Date();
+    d.setMinutes(d.getMinutes() + 30);
+    let card = new Card(
+      '1',
+      'Order #123',
+      'summary',
+      'sample desc',
+      [
+        { item: 'Apple', count: 1, selected: false },
+        { item: 'Apple Burgers', count: 4, selected: false },
+      ],
+      d,
+      30
+    );
+    notStarted.cards.push(card);
+    d = new Date();
+    d.setMinutes(d.getMinutes() + 60);
+    card = new Card(
+      '2',
+      'Order #234',
+      'summary',
+      'sample desc',
+      [
+        { item: 'Oranges', count: 2, selected: false },
+        { item: 'Pear Burgers', count: 1, selected: false },
+        { item: 'Apple Fries', count: 4, selected: false },
+      ],
+      d,
+      60
+    );
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
+    notStarted.cards.push(card);
     notStarted.cards.push(card);
 
     const inProg: ListInterface = new List();
@@ -53,6 +98,23 @@ export class BoardComponent implements OnInit {
   }
 
   moveCardAcrossList(movementInformation: MovementIntf) {
+    console.log(movementInformation);
+    let canMove = true;
+
+    if (movementInformation.toListIdx >= 2) {
+      const card =
+        this.lists[movementInformation.fromListIdx].cards[
+          movementInformation.fromCardIdx
+        ];
+      card.items.forEach((item) => {
+        if (!item.selected) {
+          this.showCantMoveDialog();
+          canMove = false;
+          return;
+        }
+      });
+    }
+    if (!canMove) return;
     const cardMoved = this.lists[movementInformation.fromListIdx].cards.splice(
       movementInformation.fromCardIdx,
       1
@@ -62,5 +124,11 @@ export class BoardComponent implements OnInit {
       0,
       ...cardMoved
     );
+  }
+
+  showCantMoveDialog() {
+    this.snackBar.open('All items in the order are not complete!', '', {
+      duration: 311000,
+    });
   }
 }

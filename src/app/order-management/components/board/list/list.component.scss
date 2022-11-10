@@ -1,6 +1,5 @@
 .col {
   background-color: #F5F5F5;
-  margin: 0px;
   /* padding-top: 10px;
   padding-bottom: 10px; */
   border-top: solid 5px blue;
@@ -26,7 +25,11 @@
   text-align: center;
 }
 
+.list-one {
+  max-height: calc(95vh - 35px);
+}
+
 .list {
   background-color: #e7e9ea;
-  height: calc(100vh - 10px);
+  height: calc(100vh - 30px);
 }

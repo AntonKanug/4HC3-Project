@@ -48,6 +48,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderManagementModule } from './order-management/order-management.module';
 import { CartItemLargeComponent } from './cart/cart-item-large/cart-item-large.component';
 
+import {
+  APP_BASE_HREF,
+  LocationStrategy,
+  HashLocationStrategy,
+} from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +106,10 @@ import { CartItemLargeComponent } from './cart/cart-item-large/cart-item-large.c
     MatFormFieldModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
