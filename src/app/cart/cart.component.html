@@ -19,7 +19,10 @@
 
 <!-- Items -->
 <div class="body">
-  <div class="items">
+  <div class="items" style="display:flex; flex-direction: column;">
+    <div style="padding-top: 16px ;border-bottom: solid black 2px; display: flex; flex-direction: row;justify-content: center; align-items: center;">
+      <h1 class="header">Items</h1>
+    </div>
     <app-cart-item-large
       *ngFor="let item of cartItems; index as i"
       [item] = item
@@ -39,7 +42,7 @@
   <div class="delivery-payment">
     <mat-card>
         <div [ngStyle]="{'border-bottom': deliveryChecked ? 'solid black 2px' : '' }" style="display: flex; flex-direction: row; justify-content: space-between;">
-          <h1 style="align-self:center">Delivery</h1>
+          <h1 class="header" style="align-self:center">Delivery</h1>
           <mat-slide-toggle style="padding-top: 4px;"[(ngModel)]="deliveryChecked" [checked]="deliveryChecked"></mat-slide-toggle>
         </div>
       <div style="padding-top:5px" *ngIf=deliveryChecked>
@@ -91,19 +94,19 @@
     </mat-card>
     <mat-card class="payment">
       <div style="border-bottom: solid black 2px">
-        <h1>Order Summary</h1>
+        <h1 class="header">Order Summary</h1>
       </div>
       <div class="total-row" style="padding-top:15px">
-        <h2>Subtotal:</h2>
-        <h2>$ {{getCartTotal()}}</h2>
+        <h2 class="summary-font">Subtotal:</h2>
+        <h2 class="summary-font">$ {{getCartTotal()}}</h2>
       </div>
       <div *ngIf="deliveryChecked" class="total-row">
-        <h2>Delivery:</h2>
-        <h2>$ {{deliveryCost}}</h2>
+        <h2 class="summary-font">Delivery:</h2>
+        <h2 class="summary-font">$ {{deliveryCost}}</h2>
       </div>
       <div class="total-row" style="border-top: solid black 2px; padding-top: 10%;">
-        <h2>Total:</h2>
-        <h2>$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
+        <h2 class="total-font">Total:</h2>
+        <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
       </div>
       <div style="padding-top: 15px">
         <button mat-raised-button class="checkout-button" color="accent" [routerLink]="['/checkout']">Checkout</button>
