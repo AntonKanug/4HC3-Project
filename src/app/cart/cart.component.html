@@ -5,10 +5,13 @@
   </a>
   <span class="spacer"></span>
   <div class="cart">
-    <button disabled mat-icon-button>
+    <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
     <span>{{cartItems.length}}</span>
+    <mat-menu class="cart-modal" style="background-color:#FFD740" #cartDropDown="matMenu" yPosition="below">
+      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']" mat-menu-item>Continue Shopping</button>
+    </mat-menu>
   </div>
 </mat-toolbar>
 
@@ -32,7 +35,7 @@
     </app-cart-item-large>
     <div *ngIf="cartItems.length == 0">
       <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-        <h1 style="padding-top: 10px; font-weight: bold;">Cart Empty</h1>
+        <h1 style="padding-top: 20%; font-weight: bold;">Cart Empty</h1>
         <button mat-raised-button class="continue-shopping-button" color="primary" [routerLink]="['/']">Continue Shopping</button>
       </div>
     </div>
@@ -109,7 +112,7 @@
         <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
       </div>
       <div style="padding-top: 15px">
-        <button (click)="onSubmit()" mat-raised-button class="checkout-button" color="accent" >Checkout</button>
+        <button (click)="onSubmit()" [routerLink]="['/checkout']" mat-raised-button class="checkout-button" color="accent" >Checkout</button>
       </div>
     </mat-card>
   </div>
