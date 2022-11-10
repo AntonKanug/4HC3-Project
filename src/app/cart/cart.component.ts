@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
     {name: "Croissant", price: 4.32, imageUrl: "../../assets/images/menuItems/croissant.png", description: "A buttery croissant freshly made from paris. A buttery croissant freshly made from paris. A buttery croissant freshly made from paris. ", calories: 290, count: 8, tags: [FoodTag.Vegetarian], isPopular:true, isFavorite:true, category: FoodCategory.Salad}
   ]
   deliveryChecked = true;
+  deliveryCost = 4.25;
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +21,14 @@ export class CartComponent implements OnInit {
   checkTrue(): boolean{
     console.log(this.cartItems)
     return true
+  }
+
+  getCartTotal(): number {
+    var total: number = 0;
+    for (let i = 0; i<this.cartItems.length; i++){
+      total+= this.cartItems[i].price * this.cartItems[i].count!;
+    }
+    return Math.round(total * 100)/100
   }
 
   removeCartItem(index:number){

@@ -27,8 +27,11 @@
       (itemToDelete) = removeCartItem($event)
       class="item-card">
     </app-cart-item-large>
-    <div style="display: flex; align-items: center; justify-content: center;"  *ngIf="cartItems.length == 0">
-      <h1 style="padding-top: 10px; font-weight: bold;">Cart Empty</h1>
+    <div *ngIf="cartItems.length == 0">
+      <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <h1 style="padding-top: 10px; font-weight: bold;">Cart Empty</h1>
+        <button mat-raised-button class="continue-shopping-button" color="primary" [routerLink]="['/']">Continue Shopping</button>
+      </div>
     </div>
   </div>
 
@@ -90,9 +93,21 @@
       <div style="border-bottom: solid black 2px">
         <h1>Order Summary</h1>
       </div>
-      <div *ngFor="let item of cartItems">
+      <div class="total-row" style="padding-top:15px">
+        <h2>Subtotal:</h2>
+        <h2>$ {{getCartTotal()}}</h2>
       </div>
-      <button>checkout</button>
+      <div *ngIf="deliveryChecked" class="total-row">
+        <h2>Delivery:</h2>
+        <h2>$ {{deliveryCost}}</h2>
+      </div>
+      <div class="total-row" style="border-top: solid black 2px; padding-top: 10%;">
+        <h2>Total:</h2>
+        <h2>$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
+      </div>
+      <div style="padding-top: 15px">
+        <button mat-raised-button class="checkout-button" color="accent" [routerLink]="['/checkout']">Checkout</button>
+      </div>
     </mat-card>
   </div>
 </div>
