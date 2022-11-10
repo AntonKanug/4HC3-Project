@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { FormGroup, FormControl } from '@angular/forms';
 import { MenuItem } from 'src/app/models/menu-item';
 
 @Component({
@@ -10,7 +10,9 @@ import { MenuItem } from 'src/app/models/menu-item';
 export class CardComponent implements OnInit {
   @Input() item: MenuItem;
   @Output() onFavourite: EventEmitter<MenuItem> = new EventEmitter();
-
+  menuForm = new FormGroup({
+    itemAmount: new FormControl('')
+  });
   constructor() {}
 
   ngOnInit(): void {}

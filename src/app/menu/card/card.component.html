@@ -25,7 +25,7 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <mat-form-field class="end-row">
+    <mat-form-field [formGroup]="menuForm" class="end-row">
       <input
         type="number"
         class="form-control"
@@ -33,7 +33,7 @@
         name="item-amount"
         placeholder="Amount"
         value="1"
-        formControlName="item-amount"
+        formControlName="itemAmount"
       />
     </mat-form-field>
     <div class="spaced-row">
