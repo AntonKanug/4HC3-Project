@@ -35,6 +35,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -97,6 +98,7 @@ import { CartItemLargeComponent } from './cart/cart-item-large/cart-item-large.c
     MatToolbarModule,
     MatTooltipModule,
     MatFormFieldModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
