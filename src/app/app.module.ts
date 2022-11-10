@@ -35,7 +35,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -105,6 +105,7 @@ import {
     MatTooltipModule,
     MatFormFieldModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },

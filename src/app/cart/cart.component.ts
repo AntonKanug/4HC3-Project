@@ -1,12 +1,14 @@
 import { Component, OnInit} from '@angular/core';
 import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
-
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  constructor() { }
+  ngOnInit(): void {}
   cartItems: MenuItem[] = [
     {name: "Potato", price: 4.97, imageUrl: "../../assets/images/menuItems/potato.png", description: "One yummy peeled potato. One yummy peeled potato. One yummy peeled potato. ", calories: 50, count: 5, tags: [FoodTag.Halal], category: FoodCategory.Burger, isFavorite: false, isPopular: true},
     {name: "Watermelon", price: 2.00, imageUrl: "../../assets/images/menuItems/watermelon.png", description: "A juicy red watermelon with seeds. A juicy red watermelon with seeds. A juicy red watermelon with seeds. ", calories: 75, count: 2, tags: [FoodTag.Vegetarian], isFavorite: true, isPopular:false, category:FoodCategory.Salad},
@@ -14,13 +16,21 @@ export class CartComponent implements OnInit {
   ]
   deliveryChecked = true;
   deliveryCost = 4.25;
-  constructor() { }
 
-  ngOnInit(): void {
-  }
-  checkTrue(): boolean{
-    console.log(this.cartItems)
-    return true
+  deliveryForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormControl(''),
+    address2: new FormControl(''),
+    city: new FormControl(''),
+    province: new FormControl(''),
+    postalCode: new FormControl('')
+  });
+
+  onSubmit(){
+    // might want to pass this to the checkout page
+    console.log(this.deliveryForm.value);
   }
 
   getCartTotal(): number {
@@ -35,5 +45,4 @@ export class CartComponent implements OnInit {
     console.log(index)
     this.cartItems.splice(index,1)
   }
-
 }

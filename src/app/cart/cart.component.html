@@ -47,45 +47,45 @@
         </div>
       <div style="padding-top:5px" *ngIf=deliveryChecked>
         Please fill out the form with your delivery details, * fields are required.
-        <form>
+        <div [formGroup]="deliveryForm">
           <div class="row">
             <mat-form-field class="dual-input-row-left" appearance="outline">
               <mat-label>First name</mat-label>
-              <input matInput required placeholder="Eg. William">
+              <input formControlName="firstName" matInput required placeholder="Eg. William">
             </mat-form-field>
             <mat-form-field class="dual-input-row-right" appearance="outline">
               <mat-label>Last name</mat-label>
-              <input matInput required placeholder="Eg. McMaster">
+              <input formControlName="lastName" matInput required placeholder="Eg. McMaster">
             </mat-form-field>
           </div>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Email Address</mat-label>
-            <input matInput required placeholder="Eg. william@mail.com">
+            <input formControlName="email" matInput required placeholder="Eg. william@mail.com">
           </mat-form-field>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Address</mat-label>
-            <input matInput required placeholder="Eg. 1280 Main St West">
+            <input formControlName="address" matInput required placeholder="Eg. 1280 Main St West">
           </mat-form-field>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Address 2</mat-label>
-            <input matInput placeholder="Eg. 1280 King St West">
+            <input formControlName="address2" matInput placeholder="Eg. 1280 King St West">
           </mat-form-field>
           <div class="row">
             <mat-form-field class="triple-input-row-left" appearance="outline">
               <mat-label>City</mat-label>
-              <input matInput required placeholder="Eg. Hamilton">
+              <input formControlName="city" matInput required placeholder="Eg. Hamilton">
             </mat-form-field>
             <mat-form-field class="triple-input-row-mid" appearance="outline">
               <mat-label>Province</mat-label>
-              <input matInput required placeholder="Eg. Ontario">
+              <input formControlName="province" matInput required placeholder="Eg. Ontario">
             </mat-form-field>
             <mat-form-field class="triple-input-row-right" appearance="outline">
               <mat-label>Postal Code</mat-label>
-              <input matInput required #postalCode maxlength="7" placeholder="Eg. L8S 4L8">
+              <input formControlName="postalCode" matInput required #postalCode maxlength="7" placeholder="Eg. L8S 4L8">
               <mat-hint align="end">{{postalCode.value.length}} / 7</mat-hint>
             </mat-form-field>
           </div>
-        </form>
+        </div>
         <div>
           <h2>Location</h2>
           <img class="map" src="../../assets/images/map.png">
@@ -109,7 +109,7 @@
         <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
       </div>
       <div style="padding-top: 15px">
-        <button mat-raised-button class="checkout-button" color="accent" [routerLink]="['/checkout']">Checkout</button>
+        <button (click)="onSubmit()" mat-raised-button class="checkout-button" color="accent" >Checkout</button>
       </div>
     </mat-card>
   </div>
