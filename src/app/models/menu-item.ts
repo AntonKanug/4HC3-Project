@@ -8,6 +8,7 @@ export interface MenuItem {
   category: FoodCategory;
   isPopular: boolean;
   isFavorite: boolean;
+  count?: number;
 }
 
 export enum FoodTag {
