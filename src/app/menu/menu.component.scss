@@ -1,34 +1,33 @@
 .navbar {
-    padding: 0 32px;
+  padding: 0 32px;
 }
 
-
 .cart {
-    display: flex;
-    align-items: center;
-    padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
 }
 
 .spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .logo {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-    // cursor: default; // TEMPORARY, until link acc does something
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  // cursor: default; // TEMPORARY, until link acc does something
 
-    .logo-image {
-        max-height: 100%;
-        padding: 10px;
-    }
+  .logo-image {
+    max-height: 100%;
+    padding: 10px;
+  }
 
-    .logo-text {
-        line-height: 1.4rem;
-    }
+  .logo-text {
+    line-height: 1.4rem;
+  }
 }
 
 .cart-modal {
@@ -55,14 +54,29 @@
   justify-content: space-between;
 }
 .cart-title {
-  color:black;
+  color: black;
   font-size: x-large;
   font-weight: 500;
 }
 .delete-button {
   background-color: rgb(255, 0, 0);
   color: rgb(255, 255, 255);
-  height:2em !important;
-  width:2em !important;
-  font-size:large !important;
+  height: 2em !important;
+  width: 2em !important;
+  font-size: large !important;
+}
+
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.filters {
+  mat-form-field + mat-form-field {
+    margin-left: 10px;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
 }

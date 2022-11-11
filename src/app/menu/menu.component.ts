@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { map, Observable, startWith } from 'rxjs';
 import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
+
+enum SortOption {
+  PHTL = 'Price (High to Low)',
+  PLTH = 'Price (Low to High)',
+  CHTL = 'Calories (High to Low)',
+  CLTH = 'Calories (Low to High)',
+}
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +18,16 @@ import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
 })
 export class MenuComponent implements OnInit {
   foodCategories = Object.values(FoodCategory);
+
+  dietaryRestrictions = Object.values(FoodTag);
+  dietaryFilters = new FormControl('');
+
+  searchableNames: Observable<string[]>;
+  searchControl = new FormControl('');
+
+  sortOption = '';
+  sortOptions: string[] = Object.values(SortOption);
+
   allItems: MenuItem[] = [
     {
       name: 'Shiba Inu',
@@ -21,7 +40,7 @@ export class MenuComponent implements OnInit {
       imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
       isPopular: true,
       isFavorite: false,
-      count: 3
+      count: 3,
     },
     {
       name: 'Apple Bowl',
@@ -38,11 +57,24 @@ export class MenuComponent implements OnInit {
     },
   ];
   currentItems: MenuItem[] = this.allItems;
+
+  searchValue = '';
   curTabLabel = 'All';
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchableNames = this.searchControl.valueChanges.pipe(
+      startWith(''),
+      map((value) => this._search(value || ''))
+    );
+  }
+
+  private _search(value: string): string[] {
+    this.searchValue = value.toLowerCase();
+    this.filterItems();
+    return this.currentItems.map((item) => item.name);
+  }
 
   onChangeTab(event: MatTabChangeEvent): void {
     this.curTabLabel = event.tab.textLabel;
@@ -57,22 +89,47 @@ export class MenuComponent implements OnInit {
     switch (this.curTabLabel) {
       case 'All':
         this.currentItems = this.allItems;
-        return;
+        break;
       case 'Favourites':
         this.currentItems = this.allItems.filter((item) => item.isFavorite);
-        return;
+        break;
       case 'Popular':
         this.currentItems = this.allItems.filter((item) => item.isPopular);
-        return;
+        break;
       default:
         const category = this.curTabLabel as FoodCategory;
         this.currentItems = this.allItems.filter(
           (item) => item.category === category
         );
+        break;
+    }
+    const dietaryFilters = this.dietaryFilters.value as FoodTag[];
+    this.currentItems = this.currentItems.filter(
+      (item) =>
+        item.name.toLowerCase().includes(this.searchValue) &&
+        (item.tags.some((t) => dietaryFilters.includes(t)) ||
+          dietaryFilters.length === 0)
+    );
+    const sortOption = this.sortOption as SortOption;
+    switch (sortOption) {
+      case SortOption.PLTH:
+        this.currentItems = this.currentItems.sort((i) => i.price).reverse();
+        break;
+      case SortOption.PHTL:
+        this.currentItems = this.currentItems.sort((i) => i.price);
+        break;
+      case SortOption.CLTH:
+        this.currentItems = this.currentItems.sort((i) => i.calories).reverse();
+        break;
+      case SortOption.CHTL:
+        this.currentItems = this.currentItems.sort((i) => i.calories);
+        break;
+      default:
+        break;
     }
   }
 
-  removeItemFromCart(){
-    console.log("i should remove an item from the cart")
+  removeItemFromCart() {
+    console.log('i should remove an item from the cart');
   }
 }
