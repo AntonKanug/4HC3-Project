@@ -28,25 +28,26 @@
     </mat-card-content>
     
   </div>
-  <mat-card-actions class="actions">
+  <mat-card-actions  class="last-object">
     <mat-form-field [formGroup]="menuForm" class="end-row">
       <input
         type="number"
         class="form-control"
         matInput
         name="item-amount"
-        placeholder="Amount"
+        placeholder="Amount to add"
         value="1"
+        min="1"
         formControlName="itemAmount"
       />
     </mat-form-field>
-    <div class=" spaced-row">
+    <div class="actions spaced-row">
       <mat-chip-list>
         <mat-chip *ngFor="let tag of item.tags" color="accent" selected>
           {{ tag }}
         </mat-chip>
       </mat-chip-list>
-      <button mat-raised-button color="primary">Add</button>
+      <button mat-raised-button color="primary" (click)="addToCart()">Add</button>
     </div>
   </mat-card-actions>
   

@@ -16,12 +16,12 @@ export class CartItemLargeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  delItem(){
-    this.itemToDelete.emit(this.index!);
+  delItem() {
+    this.itemToDelete.emit(this.item!);
   }
 
   incItemCount() {
-    if (this.item?.count && this.item.count < 10) {
+    if (this.item?.count) {
       this.item!.count += 1;
     }
   }

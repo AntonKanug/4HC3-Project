@@ -8,7 +8,7 @@
     <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
-    <span>{{cartItems.length}}</span>
+    <span>{{getNumberOfItems()}}</span>
     <mat-menu class="cart-modal" style="background-color:#FFD740" #cartDropDown="matMenu" yPosition="below">
       <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']" mat-menu-item>Continue Shopping</button>
     </mat-menu>

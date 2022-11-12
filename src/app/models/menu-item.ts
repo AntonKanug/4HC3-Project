@@ -4,7 +4,7 @@ export interface MenuItem {
   description: string;
   imageUrl: string;
   calories: number;
-  tags: [FoodTag];
+  tags: FoodTag[];
   category: FoodCategory;
   isPopular: boolean;
   isFavorite: boolean;

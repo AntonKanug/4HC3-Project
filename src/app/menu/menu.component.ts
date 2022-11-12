@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { map, Observable, startWith } from 'rxjs';
 import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
+import { CartItemsService } from '../services/cart-items.service';
+import { CalculateNumberOfItems } from '../helpers/calculateTotalItemsInCart';
 
 enum SortOption {
   PHTL = 'Price (High to Low)',
@@ -35,12 +37,11 @@ export class MenuComponent implements OnInit {
       description:
         'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.`      ',
       calories: 350,
-      tags: [FoodTag.Halal],
+      tags: [FoodTag.Halal, FoodTag.Vegetarian],
       category: FoodCategory.Burger,
       imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
       isPopular: true,
       isFavorite: false,
-      count: 3,
     },
     {
       name: 'Apple Bowl',
@@ -53,17 +54,22 @@ export class MenuComponent implements OnInit {
         'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
       isPopular: false,
       isFavorite: false,
-      count: 8,
     },
   ];
   currentItems: MenuItem[] = this.allItems;
 
+  cartItems: MenuItem[] = [];
+
   searchValue = '';
   curTabLabel = 'All';
 
-  constructor() {}
+  constructor(private cartItemService: CartItemsService) {}
 
   ngOnInit(): void {
+    this.cartItemService.cartItems.subscribe((res) => {
+      this.cartItems = res;
+    });
+
     this.searchableNames = this.searchControl.valueChanges.pipe(
       startWith(''),
       map((value) => this._search(value || ''))
@@ -129,7 +135,11 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  removeItemFromCart() {
-    console.log('i should remove an item from the cart');
+  removeItemFromCart(item: MenuItem) {
+    this.cartItemService.removeItem(item);
+  }
+
+  getNumberOfItems() {
+    return CalculateNumberOfItems(this.cartItems);
   }
 }
