@@ -1,9 +1,25 @@
 <mat-toolbar class="navbar" color="primary">
-  <p>Return</p>
+  <a class="logo" [routerLink]="['/']">
+    <button mat-raised-button color="secondary">
+      <mat-icon class="homeicon">home</mat-icon>Menu</button>
+  </a>
   <a class="logo" [routerLink]="['/manager']">
     <img class="logo-image" src="./assets/apple-white-transparent.png">
     <span class="logo-text">Apple <br> Factory</span>
   </a>
   <span class="spacer"></span>
 </mat-toolbar>
-<h1>Order is confirmed!</h1>
+<div class="center">
+  <pre><h1 style="font-size:400%"><b>
+
+Thank you!
+  </b></h1></pre>
+</div>
+<div class="center">
+  <h2>Your order has been confirmed!</h2>
+</div>
+<div class="center">
+  <h2>The estimated pick up time would be: </h2>
+</div>
+
+
