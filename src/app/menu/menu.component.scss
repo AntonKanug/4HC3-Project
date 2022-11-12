@@ -1,5 +1,5 @@
 .navbar {
-  padding: 0 32px;
+  padding: 0 18%;
 }
 
 .cart {
@@ -69,6 +69,15 @@
 .example-additional-selection {
   opacity: 0.75;
   font-size: 0.75em;
+}
+
+.card {
+  height: 100%;
+  overflow: hidden;
+}
+
+.grid-list {
+  margin: 0 18%;
 }
 
 .filters {

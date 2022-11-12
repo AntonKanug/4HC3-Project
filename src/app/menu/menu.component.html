@@ -85,7 +85,7 @@
   </div>
 </mat-toolbar>
 <div>
-  <mat-tab-group (selectedTabChange)="onChangeTab($event)">
+  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChangeTab($event)">
     <mat-tab label="All"></mat-tab>
     <mat-tab label="Favourites"></mat-tab>
     <mat-tab label="Popular"></mat-tab>
@@ -141,9 +141,10 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <mat-grid-list cols="4" rowHeight="700px">
+  <mat-grid-list class="grid-list" cols="4" rowHeight="500px" gutterSize="1rem">
     <mat-grid-tile *ngFor="let item of currentItems">
       <app-card
+        class="card"
         [item]="item"
         (onFavourite)="toggleFavourite($event)"
       ></app-card>
