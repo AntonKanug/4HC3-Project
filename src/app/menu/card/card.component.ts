@@ -13,7 +13,7 @@ export class CardComponent implements OnInit {
   @Output() onFavourite: EventEmitter<MenuItem> = new EventEmitter();
 
   menuForm = new FormGroup({
-    itemAmount: new FormControl('1'),
+    itemAmount: new FormControl(1),
   });
   constructor(private cartItemService: CartItemsService) {}
 
