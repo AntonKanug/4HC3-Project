@@ -1,7 +1,8 @@
 <mat-toolbar class="navbar" color="primary">
   <a class="logo" [routerLink]="['/']">
     <button mat-raised-button color="secondary">
-      <mat-icon class="homeicon">home</mat-icon>Menu</button>
+      <mat-icon class="homeicon">home</mat-icon>Menu
+    </button>
   </a>
   <a class="logo" [routerLink]="['/manager']">
     <img class="logo-image" src="./assets/apple-white-transparent.png">
@@ -9,17 +10,41 @@
   </a>
   <span class="spacer"></span>
 </mat-toolbar>
+
+<div class="checkcontainer"><button mat-fab class="check">
+    <mat-icon>check</mat-icon>
+  </button></div>
+
 <div class="center">
   <pre><h1 style="font-size:400%"><b>
 
 Thank you!
   </b></h1></pre>
 </div>
-<div class="center">
-  <h2>Your order has been confirmed!</h2>
-</div>
-<div class="center">
-  <h2>The estimated pick up time would be: </h2>
+
+<div *ngIf="!deliveryChecked else elseBlock">
+  <div class="center">
+    <h2>Your pick up order has been confirmed!</h2>
+  </div>
+  <div class="center">
+    <h2>The estimated pick up time would be: </h2>
+  </div>
+  <div class="center">
+    <h1><b>{{pickuptime}}</b></h1>
+  </div>
 </div>
 
-
+<ng-template #elseBlock>
+  <div class="center">
+    <h2>Sit back and relax, your delivery order is on its way!</h2>
+  </div>
+  <div class="center">
+    <h2>The estimated delivery time would be: </h2>
+  </div>
+  <div class="center">
+    <h1><b>{{deliverytime}}</b></h1>
+  </div>
+  <div class="center">
+    <img class="map" src="../../assets/images/map.png">
+  </div>
+</ng-template>

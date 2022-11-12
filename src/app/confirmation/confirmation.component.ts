@@ -11,5 +11,7 @@ export class ConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  deliveryChecked = true;
+  pickuptime = "12:20pm";
+  deliverytime = "50 minutes";
 }

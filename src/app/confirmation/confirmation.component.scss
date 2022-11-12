@@ -28,6 +28,7 @@
   display: flex;
   justify-content: center;
   overflow-y: hidden;
+  height: auto;
 }
 
 .homeicon {
@@ -35,3 +36,18 @@
   margin-left: -7px;
 }
 
+.checkcontainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.check {
+  background-color:white;
+  color: green;
+  transform: scale(2);
+}
+.map {
+  width: 25%;
+  height: 25%;
+  border-radius: 5px;
+}
