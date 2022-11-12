@@ -1,16 +1,17 @@
 <mat-toolbar class="navbar" color="primary">
   <a class="logo" [routerLink]="['/']">
-    <img class="logo-image" src="/assets/apple-white-transparent.png">
+    <img class="logo-image" src="./assets/apple-white-transparent.png">
     <span class="logo-text">Apple <br> Factory</span>
   </a>
   <span class="spacer"></span>
   <div class="cart">
-    <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
+    <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
     <span>{{getNumberOfItems()}}</span>
     <mat-menu class="cart-modal" style="background-color:#FFD740" #cartDropDown="matMenu" yPosition="below">
-      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']" mat-menu-item>Continue Shopping</button>
+      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']"
+        mat-menu-item>Continue Shopping</button>
     </mat-menu>
   </div>
 </mat-toolbar>
@@ -23,20 +24,18 @@
 <!-- Items -->
 <div class="body">
   <div class="items" style="display:flex; flex-direction: column;">
-    <div style="padding-top: 16px ;border-bottom: solid black 2px; display: flex; flex-direction: row;justify-content: center; align-items: center;">
+    <div
+      style="padding-top: 16px ;border-bottom: solid black 2px; display: flex; flex-direction: row;justify-content: center; align-items: center;">
       <h1 class="header">Items</h1>
     </div>
-    <app-cart-item-large
-      *ngFor="let item of cartItems; index as i"
-      [item] = item
-      [index] = i
-      (itemToDelete) = removeCartItem($event)
-      class="item-card">
+    <app-cart-item-large *ngFor="let item of cartItems; index as i" [item]=item [index]=i
+      (itemToDelete)=removeCartItem($event) class="item-card">
     </app-cart-item-large>
     <div *ngIf="cartItems.length == 0">
       <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
         <h1 style="padding-top: 20%; font-weight: bold;">Cart Empty</h1>
-        <button mat-raised-button class="continue-shopping-button" color="primary" [routerLink]="['/']">Continue Shopping</button>
+        <button mat-raised-button class="continue-shopping-button" color="primary" [routerLink]="['/']">Continue
+          Shopping</button>
       </div>
     </div>
   </div>
@@ -44,10 +43,12 @@
   <!-- Payment and Subtotal -->
   <div class="delivery-payment">
     <mat-card>
-        <div [ngStyle]="{'border-bottom': deliveryChecked ? 'solid black 2px' : '' }" style="display: flex; flex-direction: row; justify-content: space-between;">
-          <h1 class="header" style="align-self:center">Delivery</h1>
-          <mat-slide-toggle style="padding-top: 4px;"[(ngModel)]="deliveryChecked" [checked]="deliveryChecked"></mat-slide-toggle>
-        </div>
+      <div [ngStyle]="{'border-bottom': deliveryChecked ? 'solid black 2px' : '' }"
+        style="display: flex; flex-direction: row; justify-content: space-between;">
+        <h1 class="header" style="align-self:center">Delivery</h1>
+        <mat-slide-toggle style="padding-top: 4px;" [(ngModel)]="deliveryChecked" [checked]="deliveryChecked">
+        </mat-slide-toggle>
+      </div>
       <div style="padding-top:5px" *ngIf=deliveryChecked>
         Please fill out the form with your delivery details, * fields are required.
         <div [formGroup]="deliveryForm">
@@ -112,7 +113,8 @@
         <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
       </div>
       <div style="padding-top: 15px">
-        <button (click)="onSubmit()" [routerLink]="['/checkout']" mat-raised-button class="checkout-button" color="accent" >Checkout</button>
+        <button (click)="onSubmit()" [routerLink]="['/checkout']" mat-raised-button class="checkout-button"
+          color="accent">Checkout</button>
       </div>
     </mat-card>
   </div>
