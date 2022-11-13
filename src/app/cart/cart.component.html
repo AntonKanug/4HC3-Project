@@ -3,9 +3,12 @@
     <img class="logo-image" src="./assets/apple-white-transparent.png">
     <span class="logo-text">Apple <br> Factory</span>
   </a>
-  <span class="spacer"></span>
-  <div class="cart">
-    <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
+  <span class="middle">
+    <mat-icon class="shopping-icon" aria-hidden="false" aria-label="Cart">shopping_basket</mat-icon>
+    <h1 style="font-weight: 500;font-size: 32pt; padding-left: 20px;">My Shopping Cart</h1>
+  </span>
+  <!-- <div class="cart">
+    <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
     <span>{{getNumberOfItems()}}</span>
@@ -13,13 +16,13 @@
       <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']"
         mat-menu-item>Continue Shopping</button>
     </mat-menu>
-  </div>
+  </div> -->
 </mat-toolbar>
 
-<div class="title-bar">
+<!-- <div class="title-bar">
   <mat-icon class="shopping-icon" aria-hidden="false" aria-label="Cart">shopping_basket</mat-icon>
   <h1 style="font-weight: 500;font-size: 32pt; padding-left: 20px;">My Shopping Cart</h1>
-</div>
+</div> -->
 
 <!-- Items -->
 <div class="body">
