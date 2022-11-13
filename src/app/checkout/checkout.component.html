@@ -1,1 +1,65 @@
-<p>checkout works!</p>
+<mat-toolbar class="navbar" color="primary">
+  <a class="logo" [routerLink]="['/']">
+    <img class="logo-image" src="./assets/apple-white-transparent.png">
+    <span class="logo-text">Apple <br> Factory</span>
+  </a>
+  <span class="spacer"></span>
+  <div class="cart">
+    <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
+      <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
+    </button>
+    <mat-menu class="cart-modal" style="background-color:#FFD740" #cartDropDown="matMenu" yPosition="below">
+      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/cart']"
+        mat-menu-item>Return to Cart</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<div class="title-bar">
+  <h1 style="font-weight: 500;font-size: 32pt;">Checkout</h1>
+</div>
+
+<div class="payment">
+  <mat-card class="border">
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+      <h1 class="header" style="align-self:center">Credit Card Information</h1>
+    </div>
+    <div style="padding-top:5px" >
+      <div [formGroup]="deliveryForm">
+        <div class="row">
+          <mat-form-field class="dual-input-row-left" appearance="outline">
+            <mat-label><b>Credit Card Number</b></mat-label>
+            <input formControlName="CardNumber" matInput required>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="dropdown" appearance="fill">
+          <mat-label><b>Month</b></mat-label>
+          <mat-select>
+            <mat-option *ngFor="let month of months" [value]="month.value">
+            {{month.viewValue}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="dropdown" appearance="fill">
+          <mat-label><b>Year</b></mat-label>
+          <mat-select>
+            <mat-option *ngFor="let year of years" [value]="year.value">
+            {{year.viewValue}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label><b>CVV</b></mat-label>
+          <input formControlName="CVV" matInput required>
+        </mat-form-field>
+
+      </div>
+    </div>
+  </mat-card>
+
+  <div style="padding-top: 15px">
+    <button [routerLink]="['/confirmation']" mat-raised-button class="checkout-button"
+      color="accent">Pay now</button>
+  </div>
+
+</div>
