@@ -24,7 +24,7 @@
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
       <h1 class="header" style="align-self:center">Credit Card Information</h1>
     </div>
-    <div style="padding-top:5px" >
+    <div style="padding-top:5px">
       <div [formGroup]="deliveryForm">
         <div class="row">
           <mat-form-field class="dual-input-row-left" appearance="outline">
@@ -32,20 +32,20 @@
             <input formControlName="CardNumber" matInput required>
           </mat-form-field>
         </div>
-        <mat-form-field class="dropdown" appearance="fill">
+        <mat-form-field class="dropdown">
           <mat-label><b>Month</b></mat-label>
           <mat-select>
             <mat-option *ngFor="let month of months" [value]="month.value">
-            {{month.viewValue}}
-          </mat-option>
+              {{month.viewValue}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="dropdown" appearance="fill">
+        <mat-form-field class="dropdown">
           <mat-label><b>Year</b></mat-label>
           <mat-select>
             <mat-option *ngFor="let year of years" [value]="year.value">
-            {{year.viewValue}}
-          </mat-option>
+              {{year.viewValue}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline">
@@ -58,8 +58,7 @@
   </mat-card>
 
   <div style="padding-top: 15px">
-    <button [routerLink]="['/confirmation']" mat-raised-button class="checkout-button"
-      color="accent">Pay now</button>
+    <button [routerLink]="['/confirmation']" mat-raised-button class="checkout-button" color="accent">Pay now</button>
   </div>
 
 </div>
