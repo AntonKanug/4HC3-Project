@@ -6,6 +6,7 @@ import { BoardModel } from '../../../model/board/board.model';
 import { LocalService } from '../../../service/board/local/local.service';
 import { Card } from 'src/app/order-management/model/card/card.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-board',
@@ -15,6 +16,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class BoardComponent implements OnInit {
   lists: ListInterface[] = [];
+  items = [
+    'Apple',
+    'Pear',
+    'Apple Fries',
+    'Pineapple Pizza',
+    'Peach Burger',
+    'Mango',
+    'Mango Ice Cream',
+  ];
+  cardId = 0;
+  interval;
 
   constructor(
     private localService: LocalService,
@@ -22,53 +34,13 @@ export class BoardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const board = this.localService.getBoard();
     const notStarted: ListInterface = new List();
     notStarted.position = 0;
     notStarted.name = 'Not Started';
 
-    let d = new Date();
-    d.setMinutes(d.getMinutes() + 30);
-    let card = new Card(
-      '1',
-      'Order #123',
-      'summary',
-      'sample desc',
-      [
-        { item: 'Apple', count: 1, selected: false },
-        { item: 'Apple Burgers', count: 4, selected: false },
-      ],
-      d,
-      30
-    );
-    notStarted.cards.push(card);
-    d = new Date();
-    d.setMinutes(d.getMinutes() + 60);
-    card = new Card(
-      '2',
-      'Order #234',
-      'summary',
-      'sample desc',
-      [
-        { item: 'Oranges', count: 2, selected: false },
-        { item: 'Pear Burgers', count: 1, selected: false },
-        { item: 'Apple Fries', count: 4, selected: false },
-      ],
-      d,
-      60
-    );
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
-    notStarted.cards.push(card);
+    for (let i = 0; i < 10; i++) {
+      this.addRandomCard(notStarted);
+    }
 
     const inProg: ListInterface = new List();
     inProg.position = 1;
@@ -85,7 +57,19 @@ export class BoardComponent implements OnInit {
     this.lists = [notStarted, inProg, ready, completed];
 
     // ideally retrive and initialize from some storage.
+    // while (true) {
+    //   setTimeout(() => {}, 5000);
+    //   this.addRandomCard(notStarted);
+    // }
+
+    // this.interval = setInterval(() => {
+    //   this.addRandomCard(notStarted);
+    // }, 5000);
   }
+
+  //   ngOnDestroy() {
+  //     clearInterval(this.interval);
+  //   }
 
   addList() {
     const newList: ListInterface = new List();
@@ -130,5 +114,46 @@ export class BoardComponent implements OnInit {
     this.snackBar.open('All items in the order are not complete!', '', {
       duration: 311000,
     });
+  }
+
+  addRandomCard(list) {
+    const itemList = [];
+    const itemsToGetFrom = this.shuffle(this.items);
+    this.cardId += 1;
+
+    for (let j = 0; j < this.randInt(1, 4); j++) {
+      itemList.push({
+        item: itemsToGetFrom[j],
+        count: this.randInt(1, 10),
+        selected: false,
+      });
+    }
+    const d = new Date();
+    const timeToCompelete = this.randInt(15, 60);
+    d.setMinutes(d.getMinutes() + timeToCompelete);
+
+    list.cards.push(
+      new Card(
+        String(this.cardId),
+        'Order #' + String(this.cardId),
+        '',
+        '',
+        itemList,
+        d,
+        timeToCompelete
+      )
+    );
+  }
+
+  randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  shuffle(arr: any[]): any[] {
+    return Array(arr.length)
+      .fill(null)
+      .map((_, i) => [Math.random(), i])
+      .sort(([a], [b]) => a - b)
+      .map(([, i]) => arr[i]);
   }
 }
