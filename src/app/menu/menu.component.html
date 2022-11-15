@@ -1,30 +1,23 @@
 <mat-toolbar class="navbar" color="primary">
   <a class="logo" [routerLink]="['/manager']">
     <img class="logo-image" src="./assets/apple-white-transparent.png" />
-    <span class="logo-text"
-      >Apple <br />
-      Factory</span
-    >
+    <span class="logo-text">Apple <br />
+      Factory</span>
   </a>
   <span class="spacer"></span>
   <div class="cart">
     <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
-      <mat-icon class="icon" aria-hidden="false" aria-label="Cart"
-        >shopping_cart</mat-icon
-      >
+      <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
     <span>{{getNumberOfItems()}}</span>
     <mat-menu class="cart-modal" #cartDropDown="matMenu" xPosition="before">
       <div style="padding-bottom: 10px">
-        <div
-          class="centered"
-          style="
+        <div class="centered" style="
             width: 100%;
             padding-bottom: 5px;
             padding-top: 10px;
             border-bottom: solid black 2px;
-          "
-        >
+          ">
           <div class="cart-title">Cart</div>
         </div>
         <div class="centered">
@@ -34,9 +27,7 @@
                 <p style="font-size: large; font-weight: 400">
                   {{ item.name }}
                 </p>
-                <p
-                  style="font-size: medium; font-weight: 600; padding-left: 3px"
-                >
+                <p style="font-size: medium; font-weight: 600; padding-left: 3px">
                   x {{ item.count }}
                 </p>
               </div>
@@ -46,20 +37,14 @@
               <p style="font-size: large; font-weight: 600">
                 ${{ (item.price * item.count).toFixed(2) }}
               </p>
-              <div
-                style="
+              <div style="
                   position: absolute;
                   bottom: 0;
                   right: 0;
                   padding-right: 5px;
                   padding-bottom: 5px;
-                "
-              >
-                <button
-                  (click)="$event.stopPropagation(); removeItemFromCart(item)"
-                  mat-mini-fab
-                  class="delete-button"
-                >
+                ">
+                <button (click)="$event.stopPropagation(); removeItemFromCart(item)" mat-mini-fab class="delete-button">
                   X
                 </button>
               </div>
@@ -67,18 +52,13 @@
           </div>
         </div>
       </div>
-      <button
-        class="centered"
-        style="
+      <button class="centered" style="
           font-size: large;
           font-weight: 450;
           background-color: #ffd740;
           border-radius: 5px;
           padding: 5px;
-        "
-        [routerLink]="['/cart']"
-        mat-menu-item
-      >
+        " [routerLink]="['/cart']" mat-menu-item>
         Go to Cart
       </button>
     </mat-menu>
@@ -89,22 +69,13 @@
     <mat-tab label="All"></mat-tab>
     <mat-tab label="Favourites"></mat-tab>
     <mat-tab label="Popular"></mat-tab>
-    <mat-tab
-      *ngFor="let category of foodCategories"
-      label="{{ category }}"
-    ></mat-tab>
+    <mat-tab *ngFor="let category of foodCategories" label="{{ category }}"></mat-tab>
   </mat-tab-group>
   <div class="filters">
     <mat-form-field style="width: 20%">
       <mat-label>Search</mat-label>
-      <input
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-        matInput
-        [formControl]="searchControl"
-        [matAutocomplete]="auto"
-      />
+      <input type="text" placeholder="Search" aria-label="Search" matInput [formControl]="searchControl"
+        [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let name of searchableNames | async" [value]="name">
           {{ name }}
@@ -116,38 +87,27 @@
       <mat-select [formControl]="dietaryFilters" multiple (selectionChange)="filterItems()">
         <mat-select-trigger>
           {{dietaryFilters.value?.[0] || ''}}
-          <span
-            *ngIf="(dietaryFilters.value?.length || 0) > 1"
-            class="example-additional-selection"
-          >
+          <span *ngIf="(dietaryFilters.value?.length || 0) > 1" class="example-additional-selection">
             (+{{ (dietaryFilters.value?.length || 0) - 1 }}
             {{ dietaryFilters.value?.length === 2 ? "other" : "others" }})
           </span>
         </mat-select-trigger>
-        <mat-option
-          *ngFor="let filter of dietaryRestrictions"
-          [value]="filter"
-          >{{ filter }}</mat-option
-        >
+        <mat-option *ngFor="let filter of dietaryRestrictions" [value]="filter">{{ filter }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field >
+    <mat-form-field>
       <mat-label>Sort</mat-label>
       <mat-select [(value)]="sortOption" (selectionChange)="filterItems()">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let option of sortOptions" [value]="option">{{
           option
-        }}</mat-option>
+          }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-  <mat-grid-list class="grid-list" cols="4" rowHeight="500px" gutterSize="1rem">
-    <mat-grid-tile *ngFor="let item of currentItems">
-      <app-card
-        class="card"
-        [item]="item"
-        (onFavourite)="toggleFavourite($event)"
-      ></app-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <div class="grid-list">
+    <div class="grid-card" *ngFor="let item of currentItems">
+      <app-card class="card" [item]="item" (onFavourite)="toggleFavourite($event)"></app-card>
+    </div>
+  </div>
 </div>
