@@ -1,4 +1,4 @@
-<mat-card class="card" draggable="true" (dragstart)="identifyCardBeingDragged($event)"
+<mat-card class="card-manager" draggable="true" (dragstart)="identifyCardBeingDragged($event)"
   id="list-{{listIndex}}-card-{{cardIndex}}" attr.listIndex="{{listIndex}}" attr.cardIndex="{{cardIndex}}"
   (dragover)="allowCardDragToBeDropped($event)" style="border-radius: 10px">
   <mat-card-title style="font-size: 18px;">{{card.header}}</mat-card-title>
@@ -11,7 +11,7 @@
             <mat-chip>{{item.count}}</mat-chip>
           </mat-chip-list>
         </div>
-        <div class="col" style="padding-top: 7px; padding-left: 20px;"
+        <div class="col" style="padding-top: 7px; padding-left: 22px;"
           [style.opacity]="item.selected && !timeCompleted ?'0.4' : '1' ">
           {{item.item}}
         </div>

@@ -65,6 +65,10 @@ export class BoardComponent implements OnInit {
     // this.interval = setInterval(() => {
     //   this.addRandomCard(notStarted);
     // }, 5000);
+
+    // this.snackBar.open('Welcome to Apple Factory Order Manager!', 'Done', {
+    //   duration: 3000,
+    // });
   }
 
   //   ngOnDestroy() {
@@ -111,8 +115,8 @@ export class BoardComponent implements OnInit {
   }
 
   showCantMoveDialog() {
-    this.snackBar.open('All items in the order are not complete!', '', {
-      duration: 311000,
+    this.snackBar.open('All items in the order are not complete!', 'Done', {
+      duration: 3000,
     });
   }
 
@@ -124,7 +128,7 @@ export class BoardComponent implements OnInit {
     for (let j = 0; j < this.randInt(1, 4); j++) {
       itemList.push({
         item: itemsToGetFrom[j],
-        count: this.randInt(1, 10),
+        count: this.randInt(1, 9),
         selected: false,
       });
     }
