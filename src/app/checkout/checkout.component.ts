@@ -86,4 +86,20 @@ export class CheckoutComponent implements OnInit {
     {value:'2027-5', viewValue:'2027'},
     {value:'2028-6', viewValue:'2028'},
   ]
+
+  provinces: Year[] = [
+    {viewValue:"AB", value:"Alberta"},
+    {viewValue:"BC", value:"British Columbia"},
+    {viewValue:"MB", value:"Manitoba"},
+    {viewValue:"NB", value:"New Brunswick"},
+    {viewValue:"NL", value:"Newfoundland and Labrador"},
+    {viewValue:"NS", value:"Nova Scotia"},
+    {viewValue:"NT", value:"Northwest Territories"},
+    {viewValue:"NU", value:"Nunavut"},
+    {viewValue:"ON", value:"Ontario"},
+    {viewValue:"PE", value:"Prince Edward Island"},
+    {viewValue:"QC", value:"Quebec"},
+    {viewValue:"SK", value:"Saskatchewan"},
+    {viewValue:"YT", value:"Yukon"},
+  ]
 }

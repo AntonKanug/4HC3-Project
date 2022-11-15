@@ -37,37 +37,45 @@
         Please fill out the form with your delivery details, * fields are required.
         <div [formGroup]="deliveryForm">
           <div class="row">
-            <mat-form-field class="dual-input-row-left" appearance="outline">
+            <mat-form-field class="dual-input-row-left">
               <mat-label>First name</mat-label>
               <input formControlName="firstName" matInput required placeholder="Eg. William">
             </mat-form-field>
-            <mat-form-field class="dual-input-row-right" appearance="outline">
+            <mat-form-field class="dual-input-row-right">
               <mat-label>Last name</mat-label>
               <input formControlName="lastName" matInput required placeholder="Eg. McMaster">
             </mat-form-field>
           </div>
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width">
             <mat-label>Email Address</mat-label>
             <input formControlName="email" matInput required placeholder="Eg. william@mail.com">
           </mat-form-field>
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width">
             <mat-label>Address</mat-label>
             <input formControlName="address" matInput required placeholder="Eg. 1280 Main St West">
           </mat-form-field>
-          <mat-form-field class="full-width" appearance="outline">
+          <!-- <mat-form-field class="full-width">
             <mat-label>Address 2</mat-label>
             <input formControlName="address2" matInput placeholder="Eg. 1280 King St West">
-          </mat-form-field>
+          </mat-form-field> -->
           <div class="row">
-            <mat-form-field class="triple-input-row-left" appearance="outline">
+            <mat-form-field class="triple-input-row-left">
               <mat-label>City</mat-label>
               <input formControlName="city" matInput required placeholder="Eg. Hamilton">
             </mat-form-field>
-            <mat-form-field class="triple-input-row-mid" appearance="outline">
+            <!-- <mat-form-field class="triple-input-row-mid">
               <mat-label>Province</mat-label>
               <input formControlName="province" matInput required placeholder="Eg. Ontario">
+            </mat-form-field> -->
+            <mat-form-field class="triple-input-row-mid">
+              <mat-label>Province</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let province of provinces" [value]="province.value">
+                  {{province.viewValue}}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
-            <mat-form-field class="triple-input-row-right" appearance="outline">
+            <mat-form-field class="triple-input-row-right">
               <mat-label>Postal Code</mat-label>
               <input formControlName="postalCode" matInput required #postalCode maxlength="7" placeholder="Eg. L8S 4L8">
               <mat-hint align="end">{{postalCode.value.length}} / 7</mat-hint>
