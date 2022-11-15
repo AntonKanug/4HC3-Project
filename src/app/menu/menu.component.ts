@@ -55,6 +55,66 @@ export class MenuComponent implements OnInit {
       isPopular: false,
       isFavorite: false,
     },
+    {
+      name: 'Apple Bowl',
+      price: 9.99,
+      description: 'A juicy bowl of apples.',
+      calories: 200,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Apple Bowl',
+      price: 9.99,
+      description: 'A juicy bowl of apples.',
+      calories: 200,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Apple Bowl',
+      price: 9.99,
+      description: 'A juicy bowl of apples.',
+      calories: 200,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Apple Bowl',
+      price: 9.99,
+      description: 'A juicy bowl of apples.',
+      calories: 200,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Apple Bowl',
+      price: 9.99,
+      description: 'A juicy bowl of apples.',
+      calories: 200,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
+      isPopular: false,
+      isFavorite: false,
+    },
   ];
   currentItems: MenuItem[] = this.allItems;
 
