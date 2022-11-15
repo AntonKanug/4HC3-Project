@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MenuItem } from '../models/menu-item';
+import { CartItemsService } from '../services/cart-items.service';
 
 interface Month {
   value: string;
@@ -19,14 +21,46 @@ interface Year {
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor() { }
+  cartItems: MenuItem[] = [];
 
+  constructor(private cartItemService: CartItemsService) {}
+  
   ngOnInit(): void {
+    this.cartItemService.cartItems.subscribe((res) => {
+      this.cartItems = res;
+    });
   }
-  deliveryForm = new FormGroup({
+  deliveryChecked = false;
+  deliveryCost = 4.25;
+  
+  cardForm = new FormGroup({
     CardNumber: new FormControl(''),
     CVV: new FormControl(''),
   });
+
+
+  deliveryForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormControl(''),
+    address2: new FormControl(''),
+    city: new FormControl(''),
+    province: new FormControl(''),
+    postalCode: new FormControl(''),
+  });
+
+  onSubmit() {
+    // might want to pass this to the checkout page
+  }
+
+  getCartTotal(): number {
+    var total: number = 0;
+    for (let i = 0; i < this.cartItems.length; i++) {
+      total += this.cartItems[i].price * this.cartItems[i].count!;
+    }
+    return Math.round(total * 100) / 100;
+  }
 
   months: Month[] = [
     {value:'jan-0', viewValue:'January'},

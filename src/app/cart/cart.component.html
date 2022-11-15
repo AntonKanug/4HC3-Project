@@ -3,10 +3,10 @@
     <img class="logo-image" src="./assets/apple-white-transparent.png">
     <span class="logo-text">Apple <br> Factory</span>
   </a>
-  <span class="middle">
+  <!-- <span class="middle">
     <mat-icon class="shopping-icon" aria-hidden="false" aria-label="Cart">shopping_basket</mat-icon>
     <h1 style="font-weight: 500;font-size: 32pt; padding-left: 20px;">My Shopping Cart</h1>
-  </span>
+  </span> -->
   <!-- <div class="cart">
     <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
@@ -36,7 +36,7 @@
     </app-cart-item-large>
     <div *ngIf="cartItems.length == 0">
       <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-        <h1 style="padding-top: 20%; font-weight: bold;">Cart Empty</h1>
+        <h1 style="padding: 7rem 0 ;  font-weight: bold;">Cart Empty</h1>
         <button mat-raised-button class="continue-shopping-button" color="primary" [routerLink]="['/']">Continue
           Shopping</button>
       </div>
@@ -45,7 +45,7 @@
 
   <!-- Payment and Subtotal -->
   <div class="delivery-payment">
-    <mat-card>
+    <!-- <mat-card>
       <div [ngStyle]="{'border-bottom': deliveryChecked ? 'solid black 2px' : '' }"
         style="display: flex; flex-direction: row; justify-content: space-between;">
         <h1 class="header" style="align-self:center">Delivery</h1>
@@ -98,7 +98,7 @@
           <img class="map" src="../../assets/images/map.png">
         </div>
       </div>
-    </mat-card>
+    </mat-card> -->
     <mat-card class="payment">
       <div style="border-bottom: solid black 2px">
         <h1 class="header">Order Summary</h1>
@@ -107,13 +107,9 @@
         <h2 class="summary-font">Subtotal:</h2>
         <h2 class="summary-font">$ {{getCartTotal()}}</h2>
       </div>
-      <div *ngIf="deliveryChecked" class="total-row">
-        <h2 class="summary-font">Delivery:</h2>
-        <h2 class="summary-font">$ {{deliveryCost}}</h2>
-      </div>
       <div class="total-row" style="border-top: solid black 2px; padding-top: 10%;">
         <h2 class="total-font">Total:</h2>
-        <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
+        <h2 class="total-font">$ {{getCartTotal()}}</h2>
       </div>
       <div style="padding-top: 15px">
         <button (click)="onSubmit()" [routerLink]="['/checkout']" mat-raised-button class="checkout-button"

@@ -1,10 +1,35 @@
 .navbar {
-  padding: 0 32px;
+  padding: 0 18%;
 }
+
 
 .spacer {
   flex: 1 1 auto;
 }
+
+.checkout-body {
+
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 0 18%;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.delivery-payment {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+}
+
+
+
 
 .logo {
   height: 100%;
@@ -15,23 +40,34 @@
   // cursor: default; // TEMPORARY, until link acc does something
 
   .logo-image {
-      max-height: 100%;
-      padding: 10px;
+    max-height: 100%;
+    padding: 10px;
   }
 
   .logo-text {
-      line-height: 1.4rem;
+    line-height: 1.4rem;
   }
 }
 
 .title-bar {
   padding-top: 50px;
   padding-bottom: 50px;
-  margin-left: 120px;
+  // margin-left: 120px;
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
   justify-content: left;
+  align-items: stretch;
+}
+
+.delivery-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.credit-card-number {
+  width: 100%;
 }
 
 .border {
@@ -42,9 +78,12 @@
   margin-right: 15px;
 }
 
-.payment {
-  margin-left: 100px;
-  margin-right: 50%;
+.costs {
+  flex: 1 1 0;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 }
 
 .checkout-button {

@@ -1,5 +1,5 @@
 .navbar {
-  padding: 0 32px;
+  padding: 0 18%;
 }
 
 .spacer {
@@ -12,15 +12,14 @@
   align-items: center;
   text-decoration: none;
   color: inherit;
-  // cursor: default; // TEMPORARY, until link acc does something
 
   .logo-image {
-      max-height: 100%;
-      padding: 10px;
+    max-height: 100%;
+    padding: 10px;
   }
 
   .logo-text {
-      line-height: 1.4rem;
+    line-height: 1.4rem;
   }
 }
 
@@ -32,7 +31,7 @@
 }
 
 .homeicon {
-  height:27px;
+  height: 27px;
   margin-left: -7px;
 }
 
@@ -41,11 +40,13 @@
   justify-content: center;
   margin-top: 100px;
 }
+
 .check {
-  background-color:white;
+  background-color: white;
   color: green;
   transform: scale(2);
 }
+
 .map {
   width: 25%;
   height: 25%;

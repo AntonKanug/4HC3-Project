@@ -3,62 +3,146 @@
     <img class="logo-image" src="./assets/apple-white-transparent.png">
     <span class="logo-text">Apple <br> Factory</span>
   </a>
-  <span class="spacer"></span>
-  <div class="cart">
-    <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
+  <!-- <span class="middle">
+    <mat-icon class="shopping-icon" aria-hidden="false" aria-label="Cart">shopping_basket</mat-icon>
+    <h1 style="font-weight: 500;font-size: 32pt; padding-left: 20px;">My Shopping Cart</h1>
+  </span> -->
+  <!-- <div class="cart">
+    <button [matMenuTriggerFor]="cartDropDown"  mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
+    <span>{{getNumberOfItems()}}</span>
     <mat-menu class="cart-modal" style="background-color:#FFD740" #cartDropDown="matMenu" yPosition="below">
-      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/cart']"
-        mat-menu-item>Return to Cart</button>
+      <button style="font-size: large; font-weight: 500;border-radius: 5px; padding: 5px;" [routerLink]="['/']"
+        mat-menu-item>Continue Shopping</button>
     </mat-menu>
-  </div>
+  </div> -->
 </mat-toolbar>
 
-<div class="title-bar">
-  <h1 style="font-weight: 500;font-size: 32pt;">Checkout</h1>
-</div>
+<div class="checkout-body">
+  <!-- <div class="title-bar">
+    <h1 style="font-weight: 500;font-size: 32pt;">Checkout</h1>
+  </div> -->
 
-<div class="payment">
-  <mat-card class="border">
-    <div style="display: flex; flex-direction: row; justify-content: space-between;">
-      <h1 class="header" style="align-self:center">Credit Card Information</h1>
-    </div>
-    <div style="padding-top:5px">
-      <div [formGroup]="deliveryForm">
-        <div class="row">
-          <mat-form-field class="dual-input-row-left" appearance="outline">
-            <mat-label><b>Credit Card Number</b></mat-label>
-            <input formControlName="CardNumber" matInput required>
-          </mat-form-field>
-        </div>
-        <mat-form-field class="dropdown">
-          <mat-label><b>Month</b></mat-label>
-          <mat-select>
-            <mat-option *ngFor="let month of months" [value]="month.value">
-              {{month.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="dropdown">
-          <mat-label><b>Year</b></mat-label>
-          <mat-select>
-            <mat-option *ngFor="let year of years" [value]="year.value">
-              {{year.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label><b>CVV</b></mat-label>
-          <input formControlName="CVV" matInput required>
-        </mat-form-field>
 
+  <div class="delivery-payment">
+    <mat-card class="delivery">
+      <div [ngStyle]="{'border-bottom': deliveryChecked ? 'solid black 2px' : '' }"
+        style="display: flex; flex-direction: row; justify-content: space-between;">
+        <h1 class="header" style="align-self:center">Delivery</h1>
+        <mat-slide-toggle style="padding-top: 4px;" [(ngModel)]="deliveryChecked" [checked]="deliveryChecked">
+        </mat-slide-toggle>
       </div>
+      <div style="padding-top:5px" *ngIf=deliveryChecked>
+        Please fill out the form with your delivery details, * fields are required.
+        <div [formGroup]="deliveryForm">
+          <div class="row">
+            <mat-form-field class="dual-input-row-left" appearance="outline">
+              <mat-label>First name</mat-label>
+              <input formControlName="firstName" matInput required placeholder="Eg. William">
+            </mat-form-field>
+            <mat-form-field class="dual-input-row-right" appearance="outline">
+              <mat-label>Last name</mat-label>
+              <input formControlName="lastName" matInput required placeholder="Eg. McMaster">
+            </mat-form-field>
+          </div>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input formControlName="email" matInput required placeholder="Eg. william@mail.com">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input formControlName="address" matInput required placeholder="Eg. 1280 Main St West">
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Address 2</mat-label>
+            <input formControlName="address2" matInput placeholder="Eg. 1280 King St West">
+          </mat-form-field>
+          <div class="row">
+            <mat-form-field class="triple-input-row-left" appearance="outline">
+              <mat-label>City</mat-label>
+              <input formControlName="city" matInput required placeholder="Eg. Hamilton">
+            </mat-form-field>
+            <mat-form-field class="triple-input-row-mid" appearance="outline">
+              <mat-label>Province</mat-label>
+              <input formControlName="province" matInput required placeholder="Eg. Ontario">
+            </mat-form-field>
+            <mat-form-field class="triple-input-row-right" appearance="outline">
+              <mat-label>Postal Code</mat-label>
+              <input formControlName="postalCode" matInput required #postalCode maxlength="7" placeholder="Eg. L8S 4L8">
+              <mat-hint align="end">{{postalCode.value.length}} / 7</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- <div>
+          <h2>Location</h2>
+          <img class="map" src="../../assets/images/map.png">
+        </div> -->
+      </div>
+    </mat-card>
+    <div class="payment">
+      <mat-card class="border">
+        <div>
+          <h1 class="header" style="align-self:center">Credit Card Information</h1>
+        </div>
+        <div style="padding-top:5px">
+          <div class="delivery-form" [formGroup]="deliveryForm">
+            <mat-form-field class="credit-card-number">
+              <mat-label><b>Credit Card Number</b></mat-label>
+              <input matInput required>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label><b>Month</b></mat-label>
+              <mat-select>
+                <mat-option *ngFor="let month of months" [value]="month.value">
+                  {{month.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label><b>Year</b></mat-label>
+              <mat-select>
+                <mat-option *ngFor="let year of years" [value]="year.value">
+                  {{year.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label><b>CVV</b></mat-label>
+              <input matInput required>
+            </mat-form-field>
+
+          </div>
+        </div>
+      </mat-card>
+
+
+
+    </div>
+  </div>
+
+  <mat-card class="costs">
+    <div style="border-bottom: solid black 2px">
+      <h1 class="header">Order Summary</h1>
+    </div>
+    <div class="total-row" style="padding-top:15px">
+      <h2 class="summary-font">Subtotal:</h2>
+      <h2 class="summary-font">$ {{getCartTotal()}}</h2>
+    </div>
+    <div *ngIf="deliveryChecked" class="total-row">
+      <h2 class="summary-font">Delivery:</h2>
+      <h2 class="summary-font">$ {{deliveryCost}}</h2>
+    </div>
+    <div class="total-row" style="border-top: solid black 2px; padding-top: 10%;">
+      <h2 class="total-font">Total:</h2>
+      <h2 class="total-font">$ {{getCartTotal() + (deliveryChecked ? deliveryCost: 0)}}</h2>
     </div>
   </mat-card>
 
-  <div style="padding-top: 15px">
-    <button [routerLink]="['/confirmation']" mat-raised-button class="checkout-button" color="accent">Pay now</button>
-  </div>
 
+</div>
+
+<div style="text-align: center; padding: 1rem 0 ">
+  <button [routerLink]="['/confirmation']" mat-raised-button class="checkout-button" color="accent">Pay
+    now</button>
 </div>

@@ -18,23 +18,8 @@ export class CartComponent implements OnInit {
     });
   }
 
-  deliveryChecked = false;
-  deliveryCost = 4.25;
-
-  deliveryForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    address: new FormControl(''),
-    address2: new FormControl(''),
-    city: new FormControl(''),
-    province: new FormControl(''),
-    postalCode: new FormControl(''),
-  });
-
   onSubmit() {
     // might want to pass this to the checkout page
-    console.log(this.deliveryForm.value);
   }
 
   getCartTotal(): number {
