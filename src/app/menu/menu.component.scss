@@ -89,17 +89,20 @@
 
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 15px;
+
+  .search {
+    min-width: 400px;
+  }
 }
 
 .grid-list {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
-  transition: width 1s ease-in-out;
 }
 
 .grid-card {
