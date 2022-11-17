@@ -15,7 +15,7 @@ export class SummaryComponent implements OnInit {
   @Input() cardIndex!: number;
 
   countDown: Subscription;
-  counter = 1800;
+  counter = 1800; // 1800
   tick = 60000; // min in ms = 60000
   startTime = 0;
 

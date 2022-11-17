@@ -133,7 +133,7 @@ export class BoardComponent implements OnInit {
       });
     }
     const d = new Date();
-    const timeToCompelete = this.randInt(15, 60);
+    const timeToCompelete = this.randInt(5, 45);
     d.setMinutes(d.getMinutes() + timeToCompelete);
 
     list.cards.push(
