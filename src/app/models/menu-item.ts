@@ -20,4 +20,5 @@ export enum FoodCategory {
   Burger = 'Burgers',
   Seafood = 'Seafood',
   Salad = 'Salads',
+  Appetizers = 'Appetizers',
 }
