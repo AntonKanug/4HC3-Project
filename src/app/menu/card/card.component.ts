@@ -16,6 +16,7 @@ export class CardComponent implements OnInit {
     itemAmount: new FormControl(1),
   });
   constructor(private cartItemService: CartItemsService) {}
+  count = 0;
 
   ngOnInit(): void {}
 
@@ -25,7 +26,14 @@ export class CardComponent implements OnInit {
   }
 
   addToCart() {
-    this.item.count = this.menuForm.value['itemAmount'];
+    this.item.count = this.count;
     this.cartItemService.addItem(this.item);
+  }
+
+  handleMinus() {
+    this.count -= 1;
+  }
+  handlePlus() {
+    this.count += 1;
   }
 }

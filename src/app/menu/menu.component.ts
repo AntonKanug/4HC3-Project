@@ -35,13 +35,13 @@ export class MenuComponent implements OnInit {
       name: 'Shiba Inu',
       price: 99.99,
       description:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.`      ',
+        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.',
       calories: 350,
       tags: [FoodTag.Halal, FoodTag.Vegetarian],
       category: FoodCategory.Burger,
       imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
       isPopular: true,
-      isFavorite: false,
+      isFavorite: true,
     },
     {
       name: 'Apple Bowl',
@@ -56,12 +56,38 @@ export class MenuComponent implements OnInit {
       isFavorite: false,
     },
     {
+      name: 'Crispy Tofu',
+      price: 14.99,
+      description:
+        'Crispy Japanese tofu served with sweet chili sauce and peanut.',
+      calories: 550,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://raw.githubusercontent.com/YoussefRizkalla/wild-tiger/master/src/images/food/tofu.jpg',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Stir-fried Cashew',
+      price: 19.99,
+      description:
+        'Onion, celery, bell pepper, carrot, and cashew nut in roasted sweet chili sauce.',
+      calories: 800,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Salad,
+      imageUrl:
+        'https://raw.githubusercontent.com/YoussefRizkalla/wild-tiger/master/src/images/food/friedcashew.jpg',
+      isPopular: false,
+      isFavorite: true,
+    },
+    {
       name: 'Apple Bowl',
       price: 9.99,
       description: 'A juicy bowl of apples.',
       calories: 200,
       tags: [FoodTag.Vegetarian],
-      category: FoodCategory.Salad,
+      category: FoodCategory.Seafood,
       imageUrl:
         'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
       isPopular: false,
@@ -73,11 +99,11 @@ export class MenuComponent implements OnInit {
       description: 'A juicy bowl of apples.',
       calories: 200,
       tags: [FoodTag.Vegetarian],
-      category: FoodCategory.Salad,
+      category: FoodCategory.Seafood,
       imageUrl:
         'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
-      isPopular: false,
-      isFavorite: false,
+      isPopular: true,
+      isFavorite: true,
     },
     {
       name: 'Apple Bowl',
@@ -85,31 +111,7 @@ export class MenuComponent implements OnInit {
       description: 'A juicy bowl of apples.',
       calories: 200,
       tags: [FoodTag.Vegetarian],
-      category: FoodCategory.Salad,
-      imageUrl:
-        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
-      isPopular: false,
-      isFavorite: false,
-    },
-    {
-      name: 'Apple Bowl',
-      price: 9.99,
-      description: 'A juicy bowl of apples.',
-      calories: 200,
-      tags: [FoodTag.Vegetarian],
-      category: FoodCategory.Salad,
-      imageUrl:
-        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
-      isPopular: false,
-      isFavorite: false,
-    },
-    {
-      name: 'Apple Bowl',
-      price: 9.99,
-      description: 'A juicy bowl of apples.',
-      calories: 200,
-      tags: [FoodTag.Vegetarian],
-      category: FoodCategory.Salad,
+      category: FoodCategory.Seafood,
       imageUrl:
         'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
       isPopular: false,

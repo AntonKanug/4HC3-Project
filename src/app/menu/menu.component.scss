@@ -79,7 +79,8 @@
 }
 
 .grid-list {
-  margin: 0 18%;
+  margin: 0 10%;
+  margin-top: 15px;
 }
 
 .filters {
@@ -91,7 +92,7 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 30px;
 
   .search {
     min-width: 400px;
@@ -108,5 +109,11 @@
 
 .grid-card {
   height: 400px;
-  width: 280px;
+  width: 380px;
+  padding: 5px;
+  transition: 0.2s;
+}
+
+.grid-card:hover {
+  transform: scale(1.02);
 }

@@ -1,15 +1,10 @@
 <mat-card class="menu-card">
-  <div >
+  <div>
     <mat-chip-list class="calories">
       <mat-chip> {{ item.calories }} Cal </mat-chip>
     </mat-chip-list>
-    <button 
-      class="favorite"
-      (click)="toggleFavourite()"
-      mat-icon-button
-      color="accent"
-      aria-label="Button to favorite this menu item"
-    >
+    <button class="favorite" (click)="toggleFavourite()" mat-icon-button color="accent"
+      aria-label="Button to favorite this menu item">
       <mat-icon class="star-icon">{{
         item.isFavorite ? "star" : "star_border"
       }}</mat-icon>
@@ -26,29 +21,29 @@
         {{ item.description }}
       </p>
     </mat-card-content>
-    
+
   </div>
-  <mat-card-actions  class="last-object">
-    <mat-form-field [formGroup]="menuForm" class="end-row">
-      <input
-        type="number"
-        class="form-control"
-        matInput
-        name="item-amount"
-        placeholder="Amount to add"
-        value="1"
-        min="1"
-        formControlName="itemAmount"
-      />
-    </mat-form-field>
+  <mat-card-actions class="last-object">
+    <div class="wrapper">
+      <button class="plusminus" (click)="handleMinus()">-</button>
+      <input type="number" class="num" value="0" [(ngModel)]="count" />
+      <button class="plusminus" (click)="handlePlus()">+</button>
+    </div>
+
     <div class="actions spaced-row">
       <mat-chip-list>
         <mat-chip *ngFor="let tag of item.tags" color="accent" selected>
           {{ tag }}
         </mat-chip>
       </mat-chip-list>
+
+      <!-- <mat-form-field [formGroup]="menuForm" class="end-row">
+        <input type="number" class="form-control" matInput name="item-amount" placeholder="Amount to add" value="1"
+          min="1" formControlName="itemAmount" />
+      </mat-form-field> -->
+
       <button mat-raised-button color="primary" (click)="addToCart()">Add</button>
     </div>
   </mat-card-actions>
-  
+
 </mat-card>
