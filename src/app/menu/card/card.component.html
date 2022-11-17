@@ -25,10 +25,10 @@
   </div>
   <mat-card-actions class="last-object">
     <div class="wrapper">
-      <button *ngIf="count" class="plusminus" (click)="handleMinus()">-</button>
-      <button *ngIf="!count" class="plusminus grey">-</button>
+      <button *ngIf="count>0" class="plusminus" (click)="handleMinus()">-</button>
+      <button *ngIf="count<=0" class="plusminus grey">-</button>
 
-      <input type="number" class="num" value="0" [(ngModel)]="count" />
+      <input type="number" class="num" value="0" min="0" [(ngModel)]="count" />
       <button class="plusminus" (click)="handlePlus()">+</button>
     </div>
 
