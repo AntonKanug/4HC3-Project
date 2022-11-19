@@ -69,7 +69,7 @@
             </mat-form-field> -->
             <mat-form-field class="triple-input-row-mid">
               <mat-label>Province</mat-label>
-              <mat-select>
+              <mat-select required>
                 <mat-option *ngFor="let province of provinces" [value]="province.value">
                   {{province.viewValue}}
                 </mat-option>

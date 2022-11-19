@@ -44,7 +44,7 @@ export class CheckoutComponent implements OnInit {
     email: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
-    province: new FormControl(''),
+    province: new FormControl('', [Validators.required]),
     postalCode: new FormControl('', [Validators.required]),
   });
 
