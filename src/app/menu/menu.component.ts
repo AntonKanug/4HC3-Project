@@ -7,10 +7,10 @@ import { CartItemsService } from '../services/cart-items.service';
 import { CalculateNumberOfItems } from '../helpers/calculateTotalItemsInCart';
 
 enum SortOption {
-  PHTL = 'Price (High to Low)',
   PLTH = 'Price (Low to High)',
-  CHTL = 'Calories (High to Low)',
+  PHTL = 'Price (High to Low)',
   CLTH = 'Calories (Low to High)',
+  CHTL = 'Calories (High to Low)',
 }
 
 @Component({
@@ -181,16 +181,16 @@ export class MenuComponent implements OnInit {
     const sortOption = this.sortOption as SortOption;
     switch (sortOption) {
       case SortOption.PLTH:
-        this.currentItems = this.currentItems.sort((i) => i.price).reverse();
+        this.currentItems.sort((a, b) => a.price - b.price);
         break;
       case SortOption.PHTL:
-        this.currentItems = this.currentItems.sort((i) => i.price);
+        this.currentItems.sort((a, b) => b.price - a.price);
         break;
       case SortOption.CLTH:
-        this.currentItems = this.currentItems.sort((i) => i.calories).reverse();
+        this.currentItems.sort((a, b) => a.calories - b.calories);
         break;
       case SortOption.CHTL:
-        this.currentItems = this.currentItems.sort((i) => i.calories);
+        this.currentItems.sort((a, b) => b.calories - a.calories);
         break;
       default:
         break;

@@ -7,6 +7,7 @@ import { LocalService } from '../../../service/board/local/local.service';
 import { Card } from 'src/app/order-management/model/card/card.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { setInterval } from 'timers';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -26,7 +27,9 @@ export class BoardComponent implements OnInit {
     'Mango Ice Cream',
   ];
   cardId = 0;
-  interval;
+  opened = false;
+
+  unfinishedItems = [];
 
   constructor(
     private localService: LocalService,
@@ -56,6 +59,8 @@ export class BoardComponent implements OnInit {
 
     this.lists = [notStarted, inProg, ready, completed];
 
+    interval(500).subscribe(() => this.getAllUnfinishedItems());
+
     // ideally retrive and initialize from some storage.
     // while (true) {
     //   setTimeout(() => {}, 5000);
@@ -69,6 +74,29 @@ export class BoardComponent implements OnInit {
     // this.snackBar.open('Welcome to Apple Factory Order Manager!', 'Done', {
     //   duration: 3000,
     // });
+  }
+
+  getAllUnfinishedItems() {
+    let mapOfItems = {};
+
+    this.lists[0].cards.forEach((card) => {
+      card.items.forEach((item) => {
+        if (item.selected) return;
+        mapOfItems[item.item] = (mapOfItems[item.item] || 0) + item.count;
+      });
+    });
+    this.lists[1].cards.forEach((card) => {
+      card.items.forEach((item) => {
+        if (item.selected) return;
+        mapOfItems[item.item] = (mapOfItems[item.item] || 0) + item.count;
+      });
+    });
+
+    console.log(mapOfItems);
+
+    this.unfinishedItems = Object.entries(mapOfItems).sort(
+      (a, b) => +b[1] - +a[1]
+    );
   }
 
   //   ngOnDestroy() {
@@ -86,7 +114,7 @@ export class BoardComponent implements OnInit {
   }
 
   moveCardAcrossList(movementInformation: MovementIntf) {
-    console.log(movementInformation);
+    // console.log(movementInformation);
     let canMove = true;
 
     if (movementInformation.toListIdx >= 2) {
@@ -159,5 +187,9 @@ export class BoardComponent implements OnInit {
       .map((_, i) => [Math.random(), i])
       .sort(([a], [b]) => a - b)
       .map(([, i]) => arr[i]);
+  }
+
+  toggleSideBar() {
+    this.opened = !this.opened;
   }
 }

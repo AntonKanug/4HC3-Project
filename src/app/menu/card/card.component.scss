@@ -88,16 +88,18 @@ input[type="number"] {
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .wrapper {
   padding: 10px;
-  width: 26%;
+  width: 35%;
   border-radius: 15px;
 }
 
 .plusminus {
   height: 100%;
+  width: 23px;
   background: white;
   border: none;
   font-size: 20px;

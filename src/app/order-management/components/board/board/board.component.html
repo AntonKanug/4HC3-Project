@@ -1,9 +1,42 @@
-<div class="container board" style="max-width:inherit;height:100%;">
-  <div class="row" style="padding-left: 10px">
-    <div class="col-lg-3" *ngFor="let list of lists;let i = index" style="padding-left:5px">
-      <app-list class="col-lg-3" [list]="list" [listIndex]="i" (moveCardAcrossList)="moveCardAcrossList($event)"
-        attr.listIndex="{{i}}">
-      </app-list>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" style="width:20%">
+    <div
+      style="display: flex; justify-content: flex-start; align-items: center; flex-direction: column; padding: 1rem;">
+      <h1>All Unfinished Items</h1>
+      <div style="display: flex; justify-content: flex-start; align-items: flex-start; flex-direction: column">
+        <mat-list *ngFor="let item of unfinishedItems;let i = index" style="padding-left:5px">
+          <mat-list-item>
+            <div style="padding: 5;">
+              <mat-chip-list>
+                <mat-chip>{{item[1]}}</mat-chip>
+              </mat-chip-list>
+            </div>
+            <div style="padding-top: 7px; padding-left: 22px;">
+              {{ item[0] }}
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="display: flex; height: 100%;">
+      <button mat-raised-button
+        style="margin-top: 20px; height:fit-content ;min-width: 2rem; border-radius: 0 5px 5px 0; padding: 1rem 0;"
+        (click)="toggleSideBar()">
+        <span class="vertical-text">
+          Unfinished
+          Items
+        </span></button>
+      <div class="container board" style="max-width:inherit;height:100%;">
+        <div class="row" style="padding-left: 10px">
+          <div class="col-lg-3" *ngFor="let list of lists;let i = index" style="padding-left:5px">
+            <app-list class="col-lg-3" [list]="list" [listIndex]="i" (moveCardAcrossList)="moveCardAcrossList($event)"
+              attr.listIndex="{{i}}">
+            </app-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
