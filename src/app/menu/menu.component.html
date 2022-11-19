@@ -28,7 +28,7 @@
         </div>
         <div class="centered">
           <div *ngFor="let item of cartItems; index as i" class="cart-entry">
-            <div style="margin: 0 5px 15px 5px">
+            <div>
               <p class="mat-h2" style="margin: 0">
                 {{ item.name }}
               </p>
@@ -74,18 +74,10 @@
               >
                 <mat-icon>clear</mat-icon>
               </button>
-              <div
-                style="
-                  position: absolute;
-                  bottom: 0;
-                  right: 0;
-                  padding-right: 5px;
-                  padding-bottom: 5px;
-                "
-              >
-                <p style="font-size: large; font-weight: 600">
+              <div style="position: absolute; bottom: 0; right: 0">
+                <h3 class="mat-h3">
                   ${{ (item.price * item.count).toFixed(2) }}
-                </p>
+                </h3>
               </div>
             </div>
           </div>
