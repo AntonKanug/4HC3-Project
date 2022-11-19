@@ -16,7 +16,7 @@ export class SummaryComponent implements OnInit {
 
   countDown: Subscription;
   counter = 1800; // 1800
-  tick = 60000; // min in ms = 60000
+  tick = 1000; // min in ms = 60000
   startTime = 0;
 
   timeCompleted = null;
@@ -30,7 +30,7 @@ export class SummaryComponent implements OnInit {
 
     this.counter =
       Math.ceil(
-        (this.card.shouldBeDoneBy.getTime() - new Date().getTime()) / 60000
+        (this.card.shouldBeDoneBy.getTime() - new Date().getTime()) / this.tick
       ) + 1;
     this.countDown = timer(0, this.tick).subscribe(() => --this.counter);
   }
