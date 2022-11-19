@@ -84,7 +84,7 @@
 }
 
 .filters {
-  mat-form-field+mat-form-field {
+  mat-form-field + mat-form-field {
     margin-left: 10px;
   }
 
@@ -116,4 +116,45 @@
 
 .grid-card:hover {
   transform: scale(1.02);
+}
+
+.wrapper {
+  padding: 10px;
+  width: 40%;
+  border-radius: 15px;
+}
+
+.plusminus {
+  height: 100%;
+  background: white;
+  border: none;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #673ab7;
+  border-radius: 20px;
+}
+
+.grey {
+  background-color: #d8d8d8;
+  cursor: inherit;
+}
+
+.num {
+  height: 100%;
+  width: 37.5%;
+  border: none;
+  font-size: 15px;
+  text-align: center;
+}
+
+.num input {
+  border: 1px solid #6C757D;
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
