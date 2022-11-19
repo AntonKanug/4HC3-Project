@@ -3,14 +3,24 @@
     <mat-chip-list class="calories">
       <mat-chip> {{ item.calories }} Cal </mat-chip>
     </mat-chip-list>
-    <button class="favorite" (click)="toggleFavourite()" mat-icon-button color="accent"
-      aria-label="Button to favorite this menu item">
+    <button
+      class="favorite"
+      (click)="toggleFavourite()"
+      mat-icon-button
+      color="accent"
+      aria-label="Button to favorite this menu item"
+    >
       <mat-icon class="star-icon">{{
         item.isFavorite ? "star" : "star_border"
       }}</mat-icon>
     </button>
   </div>
-  <img mat-card-image class="image" src="{{ item.imageUrl }}" alt="Photo of the menu item" />
+  <img
+    mat-card-image
+    class="image"
+    src="{{ item.imageUrl }}"
+    alt="Photo of the menu item"
+  />
   <div class="info-content">
     <div class="spaced-row">
       <h2 class="mat-h2">{{ item.name }}</h2>
@@ -21,14 +31,22 @@
         {{ item.description }}
       </p>
     </mat-card-content>
-
   </div>
   <mat-card-actions class="last-object">
     <div class="wrapper">
-      <button *ngIf="count>0" class="plusminus" (click)="handleMinus()">-</button>
-      <button *ngIf="count<=0" class="plusminus grey">-</button>
+      <button *ngIf="count > 1" class="plusminus" (click)="handleMinus()">
+        -
+      </button>
+      <button *ngIf="count <= 1" class="plusminus grey">-</button>
 
-      <input type="number" class="num" value="0" min="0" [(ngModel)]="count" />
+      <input
+        type="number"
+        class="num"
+        value="1"
+        min="1"
+        oninput="validity.valid||(value='');"
+        [(ngModel)]="count"
+      />
       <button class="plusminus" (click)="handlePlus()">+</button>
     </div>
 
@@ -44,8 +62,9 @@
           min="1" formControlName="itemAmount" />
       </mat-form-field> -->
 
-      <button mat-raised-button color="primary" (click)="addToCart()">Add</button>
+      <button mat-raised-button color="primary" (click)="addToCart()">
+        Add
+      </button>
     </div>
   </mat-card-actions>
-
 </mat-card>
