@@ -102,12 +102,6 @@ export class CheckoutComponent implements OnInit {
   ];
 
   checkValid() {
-    console.log(
-      this.cardForm.invalid,
-      this.deliveryChecked,
-      this.deliveryForm.invalid,
-      this.deliveryForm.valid
-    );
     if (this.cardForm.invalid) return true;
     if (this.deliveryChecked && this.deliveryForm.invalid) return true;
     return false;
