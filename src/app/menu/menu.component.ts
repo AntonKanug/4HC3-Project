@@ -31,18 +31,18 @@ export class MenuComponent implements OnInit {
   sortOptions: string[] = Object.values(SortOption);
 
   allItems: MenuItem[] = [
-    {
-      name: 'Shiba Inu',
-      price: 99.99,
-      description:
-        'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.',
-      calories: 350,
-      tags: [FoodTag.Halal, FoodTag.Vegetarian],
-      category: FoodCategory.Burger,
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      isPopular: true,
-      isFavorite: true,
-    },
+    // {
+    //   name: 'Shiba Inu',
+    //   price: 99.99,
+    //   description:
+    //     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.',
+    //   calories: 350,
+    //   tags: [FoodTag.Halal, FoodTag.Vegetarian],
+    //   category: FoodCategory.Burger,
+    //   imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+    //   isPopular: true,
+    //   isFavorite: true,
+    // },
     {
       name: 'Apple Bowl',
       price: 9.99,
@@ -84,7 +84,8 @@ export class MenuComponent implements OnInit {
     {
       name: 'Apple Tart',
       price: 10.99,
-      description: 'Loaded with fresh apples and baked to a perfect golden brown',
+      description:
+        'Loaded with fresh apples and baked to a perfect golden brown',
       calories: 348,
       tags: [FoodTag.Vegetarian],
       category: FoodCategory.Appetizers,
@@ -96,7 +97,8 @@ export class MenuComponent implements OnInit {
     {
       name: 'Grilled Shrimp with Apple and Charred Scallions',
       price: 13.99,
-      description: 'We prepare the shrimp as a light appetizer with green apple, charred scallions, smoked paprika and sesame seeds.',
+      description:
+        'We prepare the shrimp as a light appetizer with green apple, charred scallions, smoked paprika and sesame seeds.',
       calories: 450,
       tags: [],
       category: FoodCategory.Seafood,

@@ -48,7 +48,7 @@
           </div>
           <mat-form-field class="full-width">
             <mat-label>Email Address</mat-label>
-            <input formControlName="email" matInput required placeholder="Eg. william@mail.com">
+            <input type="email" formControlName="email" matInput required placeholder="Eg. william@mail.com">
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Address</mat-label>
@@ -94,14 +94,14 @@
           <h1 class="header" style="align-self:center">Credit Card Information</h1>
         </div>
         <div style="padding-top:5px">
-          <div class="delivery-form" [formGroup]="deliveryForm">
+          <div class="delivery-form" [formGroup]="cardForm">
             <mat-form-field class="credit-card-number">
               <mat-label><b>Credit Card Number</b></mat-label>
-              <input matInput required>
+              <input matInput required formControlName="cardNumber">
             </mat-form-field>
             <mat-form-field>
               <mat-label><b>Month</b></mat-label>
-              <mat-select>
+              <mat-select formControlName="month">
                 <mat-option *ngFor="let month of months" [value]="month.value">
                   {{month.viewValue}}
                 </mat-option>
@@ -109,7 +109,7 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label><b>Year</b></mat-label>
-              <mat-select>
+              <mat-select formControlName="year">
                 <mat-option *ngFor="let year of years" [value]="year.value">
                   {{year.viewValue}}
                 </mat-option>
@@ -117,7 +117,7 @@
             </mat-form-field>
             <mat-form-field>
               <mat-label><b>CVV</b></mat-label>
-              <input matInput required>
+              <input type="number" minlength="3" maxlength="3" matInput required formControlName="CVV">
             </mat-form-field>
 
           </div>
@@ -152,6 +152,7 @@
 
 <div style="text-align: center; padding: 1rem 0 ">
   <button [routerLink]="['/cart']" mat-raised-button class="cancel" color="warn">Return to cart</button>
-  <button [routerLink]="['/confirmation']" mat-raised-button class="checkout-button" color="primary">Pay
+  <button [disabled]="checkValid()" [routerLink]="['/confirmation']" mat-raised-button class="checkout-button"
+    color="primary">Pay
     now</button>
 </div>
