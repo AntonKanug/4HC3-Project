@@ -27,7 +27,7 @@ export class BoardComponent implements OnInit {
     'Mango Ice Cream',
   ];
   cardId = 0;
-  opened = true;
+  opened = false;
 
   unfinishedItems = [];
 
