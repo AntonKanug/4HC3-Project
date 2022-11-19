@@ -5,6 +5,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { FoodCategory, FoodTag, MenuItem } from '../models/menu-item';
 import { CartItemsService } from '../services/cart-items.service';
 import { CalculateNumberOfItems } from '../helpers/calculateTotalItemsInCart';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 enum SortOption {
   PLTH = 'Price (Low to High)',
@@ -84,7 +85,8 @@ export class MenuComponent implements OnInit {
     {
       name: 'Apple Tart',
       price: 10.99,
-      description: 'Loaded with fresh apples and baked to a perfect golden brown',
+      description:
+        'Loaded with fresh apples and baked to a perfect golden brown',
       calories: 348,
       tags: [FoodTag.Vegetarian],
       category: FoodCategory.Appetizers,
@@ -96,7 +98,8 @@ export class MenuComponent implements OnInit {
     {
       name: 'Grilled Shrimp with Apple and Charred Scallions',
       price: 13.99,
-      description: 'We prepare the shrimp as a light appetizer with green apple, charred scallions, smoked paprika and sesame seeds.',
+      description:
+        'We prepare the shrimp as a light appetizer with green apple, charred scallions, smoked paprika and sesame seeds.',
       calories: 450,
       tags: [],
       category: FoodCategory.Seafood,
@@ -125,7 +128,10 @@ export class MenuComponent implements OnInit {
   searchValue = '';
   curTabLabel = 'All';
 
-  constructor(private cartItemService: CartItemsService) {}
+  constructor(
+    private cartItemService: CartItemsService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.cartItemService.cartItems.subscribe((res) => {
@@ -199,6 +205,16 @@ export class MenuComponent implements OnInit {
 
   removeItemFromCart(item: MenuItem) {
     this.cartItemService.removeItem(item);
+    const sbRef = this.snackBar.open(
+      `Removed ${item.name} x${item.count} from cart.`,
+      'Undo',
+      {
+        duration: 3000,
+      }
+    );
+    sbRef.onAction().subscribe(() => {
+      this.cartItemService.addItem(item);
+    });
   }
 
   getNumberOfItems() {

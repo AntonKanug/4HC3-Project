@@ -145,6 +145,7 @@ export class BoardComponent implements OnInit {
   showCantMoveDialog() {
     this.snackBar.open('All items in the order are not complete!', 'Done', {
       duration: 3000,
+      panelClass: ['warning-snackbar'],
     });
   }
 
