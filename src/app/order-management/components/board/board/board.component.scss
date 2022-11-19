@@ -18,3 +18,9 @@
   background: rgb(231, 153, 9);
   color: white;
 }
+
+.vertical-text{
+  -webkit-writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+ }
