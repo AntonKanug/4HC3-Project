@@ -40,7 +40,7 @@ export class MenuComponent implements OnInit {
       calories: 350,
       tags: [FoodTag.Halal, FoodTag.Vegetarian],
       category: FoodCategory.Burger,
-      imageUrl: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      imageUrl: './assets/images/menuItems/shiba2.jpg',
       isPopular: true,
       isFavorite: true,
     },
@@ -52,7 +52,7 @@ export class MenuComponent implements OnInit {
       tags: [FoodTag.Vegetarian],
       category: FoodCategory.Salad,
       imageUrl:
-        'https://media.istockphoto.com/id/518339352/photo/apples-in-bowl.jpg?s=612x612&w=0&k=20&c=5OESjebtcZBrD6t6O82Ohf_pmJITLdJFdavfTB5e57I=',
+        './assets/images/menuItems/apple.jpg',
       isPopular: false,
       isFavorite: false,
     },
@@ -65,7 +65,7 @@ export class MenuComponent implements OnInit {
       tags: [FoodTag.Vegetarian],
       category: FoodCategory.Appetizers,
       imageUrl:
-        'https://raw.githubusercontent.com/YoussefRizkalla/wild-tiger/master/src/images/food/tofu.jpg',
+        './assets/images/menuItems/tofu.jpg',
       isPopular: false,
       isFavorite: false,
     },
@@ -78,7 +78,7 @@ export class MenuComponent implements OnInit {
       tags: [FoodTag.Vegetarian],
       category: FoodCategory.Salad,
       imageUrl:
-        'https://raw.githubusercontent.com/YoussefRizkalla/wild-tiger/master/src/images/food/friedcashew.jpg',
+        './assets/images/menuItems/friedcashew.jpg',
       isPopular: false,
       isFavorite: true,
     },
@@ -91,7 +91,7 @@ export class MenuComponent implements OnInit {
       tags: [FoodTag.Vegetarian],
       category: FoodCategory.Appetizers,
       imageUrl:
-        'https://cdn.shopify.com/s/files/1/0277/5626/5555/products/ApplePuffPastry1_1024x1024@2x.jpg?v=1637474617',
+        './assets/images/menuItems/AppleTart.png',
       isPopular: true,
       isFavorite: false,
     },
@@ -104,7 +104,7 @@ export class MenuComponent implements OnInit {
       tags: [],
       category: FoodCategory.Seafood,
       imageUrl:
-        'https://www.foodandwine.com/thmb/7GxLbPd4jVu4ITuTgiftxOJ5uqo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/201111-xl-grilled-shrimp-with-apple-and-charred-scallions-f7d303453cf5461082d949c56967b235.jpg',
+        './assets/images/menuItems/GrilledShrimp.png',
       isPopular: true,
       isFavorite: false,
     },
@@ -116,7 +116,7 @@ export class MenuComponent implements OnInit {
       tags: [],
       category: FoodCategory.Seafood,
       imageUrl:
-        'https://assets.bonappetit.com/photos/57ae124af1c801a1038bcf66/1:1/w_2240,c_limit/scallops-with-apple-pan-sauce-646.jpg',
+        './assets/images/menuItems/scallop.png',
       isPopular: false,
       isFavorite: false,
     },
