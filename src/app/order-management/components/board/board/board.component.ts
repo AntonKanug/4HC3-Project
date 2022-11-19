@@ -59,7 +59,7 @@ export class BoardComponent implements OnInit {
 
     this.lists = [notStarted, inProg, ready, completed];
 
-    interval(500).subscribe(() => this.getAllUnfinishedItems());
+    interval(250).subscribe(() => this.getAllUnfinishedItems());
 
     // ideally retrive and initialize from some storage.
     // while (true) {
@@ -92,7 +92,7 @@ export class BoardComponent implements OnInit {
       });
     });
 
-    console.log(mapOfItems);
+    // console.log(mapOfItems);
 
     this.unfinishedItems = Object.entries(mapOfItems).sort(
       (a, b) => +b[1] - +a[1]
