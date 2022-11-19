@@ -21,9 +21,12 @@
   </mat-selection-list>
 
 
-  <mat-card-subtitle *ngIf="!timeCompleted" style="padding-top: 20px">Time left: {{counter }} mins </mat-card-subtitle>
+  <mat-card-subtitle *ngIf="!timeCompleted" style="padding-top: 20px">Time left: {{ (counter - (counter % 60)) / 60 }}
+    mins & {{ counter % 60 }} secs
+  </mat-card-subtitle>
+
   <mat-card-subtitle *ngIf="timeCompleted" style="padding-top: 20px">Time completed:
-    {{ timeCompleted |  date:'shortTime' }}
+    {{ timeCompleted | date:'shortTime' }}
   </mat-card-subtitle>
 
 
@@ -36,7 +39,8 @@
     (card.timeToComplete - counter)/card.timeToComplete * 100 < 50 ? 'blue-c' :  
     (card.timeToComplete - counter)/card.timeToComplete * 100 < 75 ? 'yellow-c': 
     (card.timeToComplete - counter)/card.timeToComplete * 100 < 100 ? 'orange-c':  '' " mode="determinate"
-    value="{{ timeCompleted ? 100: (card.timeToComplete - counter)/card.timeToComplete * 100}}">
+    value="{{ timeCompleted ? 100: (card.timeToComplete*60 - counter)/(card.timeToComplete*60) * 100}}">
+
   </mat-progress-bar>
 
 </mat-card>

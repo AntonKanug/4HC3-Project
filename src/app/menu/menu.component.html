@@ -1,29 +1,24 @@
 <mat-toolbar class="navbar" color="primary">
+  <button mat-raised-button [routerLink]="['/manager']" style="position: absolute; left: 1rem; top: 1rem">Employee
+    Login</button>
   <a class="logo" [routerLink]="['/manager']">
     <img class="logo-image" src="./assets/apple-white-transparent.png" />
-    <span class="logo-text"
-      >Apple <br />
-      Factory</span
-    >
+    <span class="logo-text">Apple <br />
+      Factory</span>
   </a>
   <span class="spacer"></span>
   <div class="cart">
     <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
-      <mat-icon class="icon" aria-hidden="false" aria-label="Cart"
-        >shopping_cart</mat-icon
-      >
+      <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
     </button>
     <span>{{ getNumberOfItems() }}</span>
     <mat-menu class="cart-modal" #cartDropDown="matMenu" xPosition="before">
       <div (click)="$event.stopPropagation()" style="padding-bottom: 10px">
-        <div
-          class="centered"
-          style="
+        <div class="centered" style="
             width: 100%;
             padding-top: 10px;
             border-bottom: solid #d8d8d8 1px;
-          "
-        >
+          ">
           <h3 class="mat-h2">Your Cart</h3>
         </div>
         <div class="centered">
@@ -34,44 +29,27 @@
               </p>
               <img style="width: 40%; height: auto" src="{{ item.imageUrl }}" />
               <div class="wrapper">
-                <button
-                  *ngIf="item.count > 1"
-                  class="plusminus"
-                  (click)="
+                <button *ngIf="item.count > 1" class="plusminus" (click)="
                     $event.stopPropagation(); item.count = item.count - 1
-                  "
-                >
+                  ">
                   -
                 </button>
                 <button *ngIf="item.count <= 1" class="plusminus grey">
                   -
                 </button>
 
-                <input
-                  type="number"
-                  class="num"
-                  value="1"
-                  min="1"
-                  oninput="validity.valid||(value='');"
-                  [(ngModel)]="item.count"
-                />
-                <button
-                  class="plusminus"
-                  (click)="
+                <input type="number" class="num" value="1" min="1" oninput="validity.valid||(value='');"
+                  [(ngModel)]="item.count" />
+                <button class="plusminus" (click)="
                     $event.stopPropagation(); item.count = item.count + 1
-                  "
-                >
+                  ">
                   +
                 </button>
               </div>
             </div>
             <div style="justify-content: center; position: relative">
-              <button
-                (click)="$event.stopPropagation(); removeItemFromCart(item)"
-                mat-icon-button
-                color="warn"
-                aria-label="Remove item from cart"
-              >
+              <button (click)="$event.stopPropagation(); removeItemFromCart(item)" mat-icon-button color="warn"
+                aria-label="Remove item from cart">
                 <mat-icon>clear</mat-icon>
               </button>
               <div style="position: absolute; bottom: 0; right: 0">
@@ -84,26 +62,15 @@
         </div>
       </div>
       <div class="centered">
-        <button
-          *ngIf="cartItems && cartItems.length > 0"
-          style="width: 95%"
-          mat-raised-button
-          color="accent"
-          [routerLink]="['/cart']"
-        >
+        <button *ngIf="cartItems && cartItems.length > 0" style="width: 95%" mat-raised-button color="accent"
+          [routerLink]="['/cart']">
           Go to Cart
         </button>
       </div>
 
-      <div
-        (click)="$event.stopPropagation()"
-        style="margin: 5px 25px 15px 25px"
-        class="centered"
-        *ngIf="!cartItems || cartItems.length === 0"
-      >
-        <mat-icon style="transform: scale(2); margin: 15px"
-          >add_shopping_cart</mat-icon
-        >
+      <div (click)="$event.stopPropagation()" style="margin: 5px 25px 15px 25px" class="centered"
+        *ngIf="!cartItems || cartItems.length === 0">
+        <mat-icon style="transform: scale(2); margin: 15px">add_shopping_cart</mat-icon>
         <div class="mat-body">You have no items in your cart!</div>
         <div style="text-align: center" class="mat-caption">
           Press "Add" on a menu item to get started.
@@ -113,29 +80,17 @@
   </div>
 </mat-toolbar>
 <div>
-  <mat-tab-group
-    mat-align-tabs="center"
-    (selectedTabChange)="onChangeTab($event)"
-  >
+  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onChangeTab($event)">
     <mat-tab label="All"></mat-tab>
     <mat-tab label="Favourites"></mat-tab>
     <mat-tab label="Popular"></mat-tab>
-    <mat-tab
-      *ngFor="let category of foodCategories"
-      label="{{ category }}"
-    ></mat-tab>
+    <mat-tab *ngFor="let category of foodCategories" label="{{ category }}"></mat-tab>
   </mat-tab-group>
   <div class="filters">
     <mat-form-field class="search">
       <mat-label>Search</mat-label>
-      <input
-        type="text"
-        placeholder="Search"
-        aria-label="Search"
-        matInput
-        [formControl]="searchControl"
-        [matAutocomplete]="auto"
-      />
+      <input type="text" placeholder="Search" aria-label="Search" matInput [formControl]="searchControl"
+        [matAutocomplete]="auto" />
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let name of searchableNames | async" [value]="name">
           {{ name }}
@@ -144,26 +99,15 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Filter</mat-label>
-      <mat-select
-        [formControl]="dietaryFilters"
-        multiple
-        (selectionChange)="filterItems()"
-      >
+      <mat-select [formControl]="dietaryFilters" multiple (selectionChange)="filterItems()">
         <mat-select-trigger>
           {{dietaryFilters.value?.[0] || ''}}
-          <span
-            *ngIf="(dietaryFilters.value?.length || 0) > 1"
-            class="example-additional-selection"
-          >
+          <span *ngIf="(dietaryFilters.value?.length || 0) > 1" class="example-additional-selection">
             (+{{ (dietaryFilters.value?.length || 0) - 1 }}
             {{ dietaryFilters.value?.length === 2 ? "other" : "others" }})
           </span>
         </mat-select-trigger>
-        <mat-option
-          *ngFor="let filter of dietaryRestrictions"
-          [value]="filter"
-          >{{ filter }}</mat-option
-        >
+        <mat-option *ngFor="let filter of dietaryRestrictions" [value]="filter">{{ filter }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -172,17 +116,13 @@
         <mat-option>None</mat-option>
         <mat-option *ngFor="let option of sortOptions" [value]="option">{{
           option
-        }}</mat-option>
+          }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
   <div class="grid-list">
     <div class="grid-card" *ngFor="let item of currentItems">
-      <app-card
-        class="card"
-        [item]="item"
-        (onFavourite)="toggleFavourite($event)"
-      ></app-card>
+      <app-card class="card" [item]="item" (onFavourite)="toggleFavourite($event)"></app-card>
     </div>
   </div>
 </div>
