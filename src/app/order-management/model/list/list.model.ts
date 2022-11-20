@@ -4,6 +4,7 @@ export interface ListInterface {
   id: string;
   name: string;
   position: number;
+  tooltip: string;
   cards: CardInterface[];
 }
 
@@ -12,6 +13,7 @@ export class List implements ListInterface {
   id: string = '';
   name: string = '';
   position: number = 0;
+  tooltip: string = '';
 
   constructor() {}
 

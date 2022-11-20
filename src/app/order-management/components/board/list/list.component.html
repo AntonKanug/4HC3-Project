@@ -1,6 +1,10 @@
 <div class="list list-drag-component" (dragover)="allowCardReplacement($event)" (drop)="dropCard($event)"
   id="list-{{listIndex}}" style="margin-top: 15px; border-radius: 10px;">
-  <mat-card-title class="list-name" style="padding-top: 10px; font-size: 20px">{{list.name}} </mat-card-title>
+  <mat-card-title class="list-name"
+    style="display:flex; justify-content: center; align-items: center; padding-top: 10px; font-size: 20px">{{list.name}}
+    <mat-icon class="icon-tooltip" matTooltipClass="tooltip" matTooltip={{list.tooltip}}>help
+    </mat-icon>
+  </mat-card-title>
 
   <!-- List Card Starts -->
   <div class="list-one" style="overflow:auto; ">

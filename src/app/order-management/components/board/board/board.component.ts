@@ -40,6 +40,7 @@ export class BoardComponent implements OnInit {
     const notStarted: ListInterface = new List();
     notStarted.position = 0;
     notStarted.name = 'Not Started';
+    notStarted.tooltip = 'Orders that have not been started by the cooks';
 
     for (let i = 0; i < 10; i++) {
       this.addRandomCard(notStarted);
@@ -48,14 +49,18 @@ export class BoardComponent implements OnInit {
     const inProg: ListInterface = new List();
     inProg.position = 1;
     inProg.name = 'In Progress';
+    inProg.tooltip = 'Orders that are currently being prepared and cooked';
 
     const ready: ListInterface = new List();
     ready.position = 2;
     ready.name = 'Ready';
+    ready.tooltip =
+      'Orders that are finished and ready for pick up or delivery';
 
     const completed: ListInterface = new List();
     completed.position = 3;
     completed.name = 'Completed';
+    completed.tooltip = 'Orders that have been given for delivery or picked up';
 
     this.lists = [notStarted, inProg, ready, completed];
 
