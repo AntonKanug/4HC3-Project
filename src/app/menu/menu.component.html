@@ -10,8 +10,8 @@
   <div class="cart">
     <button [matMenuTriggerFor]="cartDropDown" mat-icon-button>
       <mat-icon class="icon" aria-hidden="false" aria-label="Cart">shopping_cart</mat-icon>
+      <span style="padding-left: 5px; font-size: 18px">{{ getNumberOfItems() }}</span>
     </button>
-    <span>{{ getNumberOfItems() }}</span>
     <mat-menu class="cart-modal" #cartDropDown="matMenu" xPosition="before">
       <div (click)="$event.stopPropagation()" style="padding-bottom: 10px">
         <div class="centered" style="
