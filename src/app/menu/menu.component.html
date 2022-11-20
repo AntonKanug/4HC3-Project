@@ -189,7 +189,29 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <div class="centered" *ngIf="!currentItems || currentItems.length === 0">
+  <div
+    class="centered"
+    *ngIf="
+      (!currentItems || currentItems.length === 0) &&
+      curTabLabel === 'Favourites'
+    "
+  >
+    <mat-icon color="accent" style="transform: scale(3); margin: 25px">star_border</mat-icon>
+    <h2 class="headline-2">No favourited items found.</h2>
+    <div style="text-align: center" class="mat-subtitle">
+      We couldn't find any favourites items which match your search and filter criteria.
+    </div>
+    <div style="text-align: center" class="mat-subtitle">
+      Click the star in the top right corner of an item to easily find it here later!
+    </div>
+  </div>
+  <div
+    class="centered"
+    *ngIf="
+      (!currentItems || currentItems.length === 0) &&
+      curTabLabel !== 'Favourites'
+    "
+  >
     <mat-icon style="transform: scale(3); margin: 25px">search</mat-icon>
     <h2 class="headline-2">No items found.</h2>
     <div style="text-align: center" class="mat-subtitle">
