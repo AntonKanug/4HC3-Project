@@ -32,7 +32,7 @@ export class CheckoutComponent implements OnInit {
   deliveryCost = 4.25;
 
   cardForm = new FormGroup({
-    cardNumber: new FormControl(''),
+    cardNumber: new FormControl('', [Validators.required]),
     CVV: new FormControl('', [Validators.required]),
     month: new FormControl('', [Validators.required]),
     year: new FormControl('', [Validators.required]),
@@ -102,6 +102,7 @@ export class CheckoutComponent implements OnInit {
   ];
 
   checkValid() {
+    console.log(this.cardForm.invalid, this.deliveryForm.invalid);
     if (this.cardForm.invalid) return true;
     if (this.deliveryChecked && this.deliveryForm.invalid) return true;
     return false;
