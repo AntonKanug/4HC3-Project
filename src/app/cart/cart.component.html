@@ -152,6 +152,7 @@
       <div style="padding-top: 15px">
         <button
           (click)="onSubmit()"
+          [disabled]="!cartItems || cartItems.length === 0"
           [routerLink]="['/checkout']"
           mat-raised-button
           class="checkout-button"
