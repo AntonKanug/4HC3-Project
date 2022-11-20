@@ -125,3 +125,19 @@
   margin-left: 14px;
   width: 250px;
 }
+
+.total-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.summary-font {
+  font-size: large;
+  font-weight: 400;
+}
+
+.total-font {
+  font-size: x-large;
+  font-weight: 600;
+}
