@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { CartItemsService } from '../services/cart-items.service';
 
 @Component({
   selector: 'app-confirmation',
   templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.scss']
+  styleUrls: ['./confirmation.component.scss'],
 })
 export class ConfirmationComponent implements OnInit {
+  deliveryChecked = true;
 
-  constructor() { }
+  constructor(private cartItemService: CartItemsService) {}
 
   ngOnInit(): void {
+    this.cartItemService.deliveryChecked.subscribe((res) => {
+      this.deliveryChecked = res;
+    });
   }
-  deliveryChecked = true;
-  pickuptime = "12:20pm";
-  deliverytime = "50 minutes";
+  pickuptime = '12:20pm';
+  deliverytime = '50 minutes';
 }

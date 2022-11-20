@@ -10,8 +10,14 @@ export class CartItemsService {
     MenuItem[]
   >([]);
 
+  private _deliveryChecked: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
+
   public readonly cartItems: Observable<MenuItem[]> =
     this._cartItems.asObservable();
+
+  public readonly deliveryChecked: Observable<boolean> =
+    this._deliveryChecked.asObservable();
 
   addItem(item: MenuItem) {
     const filter = this._cartItems
@@ -50,5 +56,9 @@ export class CartItemsService {
     if (filter.length > 0) {
       filter[0].count = item.count;
     }
+  }
+
+  toggleDeliveryChecked() {
+    this._deliveryChecked.next(!this._deliveryChecked.getValue());
   }
 }

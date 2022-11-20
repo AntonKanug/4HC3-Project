@@ -21,14 +21,18 @@ interface Year {
 export class CheckoutComponent implements OnInit {
   cartItems: MenuItem[] = [];
 
+  deliveryChecked = false;
+
   constructor(private cartItemService: CartItemsService) {}
 
   ngOnInit(): void {
     this.cartItemService.cartItems.subscribe((res) => {
       this.cartItems = res;
     });
+    this.cartItemService.deliveryChecked.subscribe((res) => {
+      this.deliveryChecked = res;
+    });
   }
-  deliveryChecked = false;
   deliveryCost = 4.25;
 
   cardForm = new FormGroup({
@@ -58,6 +62,10 @@ export class CheckoutComponent implements OnInit {
       total += this.cartItems[i].price * this.cartItems[i].count!;
     }
     return Math.round(total * 100) / 100;
+  }
+
+  toggleDelivered() {
+    this.cartItemService.toggleDeliveryChecked();
   }
 
   months: Month[] = [

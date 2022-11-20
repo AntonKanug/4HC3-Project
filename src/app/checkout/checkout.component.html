@@ -35,7 +35,7 @@
           justify-content: space-between;
         ">
         <h1 class="header" style="align-self: center">Delivery</h1>
-        <mat-slide-toggle style="padding-top: 4px" [(ngModel)]="deliveryChecked" [checked]="deliveryChecked">
+        <mat-slide-toggle style="padding-top: 4px" [checked]="deliveryChecked" (change)="toggleDelivered()">
         </mat-slide-toggle>
       </div>
       <div style="padding-top: 5px" *ngIf="deliveryChecked">
