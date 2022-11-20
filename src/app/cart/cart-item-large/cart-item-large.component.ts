@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartItemsService } from 'src/app/services/cart-items.service';
 import { MenuItem } from '../../models/menu-item';
 
 @Component({
@@ -12,12 +14,26 @@ export class CartItemLargeComponent implements OnInit {
 
   @Output() itemToDelete = new EventEmitter();
 
-  constructor() {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private cartItemService: CartItemsService
+  ) {}
 
   ngOnInit(): void {}
 
   delItem() {
     this.itemToDelete.emit(this.item!);
+
+    const sbRef = this.snackBar.open(
+      `Removed ${this.item.name} x${this.item.count} from cart.`,
+      'Undo',
+      {
+        duration: 3000,
+      }
+    );
+    sbRef.onAction().subscribe(() => {
+      this.cartItemService.addItem(this.item);
+    });
   }
 
   incItemCount() {
