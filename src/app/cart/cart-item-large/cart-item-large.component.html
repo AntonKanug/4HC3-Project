@@ -15,33 +15,25 @@
           src="{{ item.imageUrl }}"
           alt="{{ item.name }} picture"
         />
-        <div class="quantity-box">
+        <div class="wrapper">
           <button
-            mat-raised-button
-            class="quantity-button"
+            *ngIf="item.count > 1"
+            class="plusminus"
             (click)="decItemCount()"
-            [disabled]="item?.count == 1"
           >
             -
           </button>
-          <h2
-            style="
-              margin-left: 20px;
-              margin-right: 20px;
-              margin-top: auto;
-              margin-bottom: auto;
-            "
-          >
-            {{ item?.count }}
-          </h2>
-          <button
-            mat-raised-button
-            class="quantity-button"
-            (click)="incItemCount()"
-            [disabled]="item?.count == 10"
-          >
-            +
-          </button>
+          <button *ngIf="item.count <= 1" class="plusminus grey">-</button>
+
+          <input
+            type="number"
+            class="num"
+            value="1"
+            min="1"
+            oninput="validity.valid||(value='');"
+            [(ngModel)]="item.count"
+          />
+          <button class="plusminus" (click)="incItemCount()">+</button>
         </div>
       </div>
       <div style="width: 67%; padding-left: 1em">

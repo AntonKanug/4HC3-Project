@@ -56,3 +56,51 @@
   padding-top: 20px;
   min-width: 375px;
 }
+
+.wrapper {
+  padding: 10px;
+  border-radius: 15px;
+  width: 45%;
+  @media only screen and (min-width: 1200px) and (max-width: 1650px) {
+    width: 65%;
+  }
+  @media only screen and (max-width: 1200px) {
+    width: 85%;
+  }
+}
+.plusminus {
+  height: 100%;
+  width: 23px;
+  background: white;
+  border: none;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #673ab7;
+  border-radius: 20px;
+}
+
+.grey {
+  background-color: #d8d8d8;
+  cursor: inherit;
+}
+
+.num {
+  height: 100%;
+  width: 37.5%;
+  border: none;
+  font-size: 15px;
+  text-align: center;
+}
+
+.num input {
+  border: 1px solid #6c757d;
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
