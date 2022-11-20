@@ -1,13 +1,9 @@
 <mat-toolbar class="navbar" color="primary">
   <div style="position: absolute; left: 1rem; top: 1rem">
-    <button mat-raised-button [routerLink]="['/manager']">Employee
+    <button mat-raised-button [routerLink]="['/manager']" class="icon-tooltip" matTooltipClass="tooltip"
+      matTooltip='Only visible for demo purposes. Entrypoint to Order Management system'>Employee
       Login
     </button>
-    <mat-icon class="icon-tooltip" matTooltipClass="tooltip"
-      matTooltip='Only visible for demo purposes. Entrypoint to Order Management system.'
-      style="position: absolute; padding:5px">
-      help
-    </mat-icon>
   </div>
   <a class="logo" [routerLink]="['/']">
     <img class="logo-image" src="./assets/apple-white-transparent.png" />
