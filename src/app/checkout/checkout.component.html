@@ -173,8 +173,10 @@
   <button [routerLink]="['/cart']" mat-raised-button class="cancel" color="warn">
     Return to cart
   </button>
-  <button [disabled]="checkValid()" [routerLink]="['/confirmation']" mat-raised-button class="checkout-button"
-    color="primary">
-    Pay now
-  </button>
+  <span matTooltip="You must fill out all required sections." [matTooltipDisabled]="!checkValid()">
+    <button [disabled]="checkValid()" [routerLink]="['/confirmation']" mat-raised-button class="checkout-button"
+      color="primary">
+      Pay now
+    </button>
+  </span>
 </div>
