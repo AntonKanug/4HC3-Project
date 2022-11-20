@@ -1,8 +1,10 @@
 <mat-toolbar class="navbar" color="primary">
   <a class="logo" [routerLink]="['/']">
     <img class="logo-image" src="./assets/apple-white-transparent.png" />
-    <span class="logo-text">Apple <br />
-      Factory</span>
+    <span class="logo-text"
+      >Apple <br />
+      Factory</span
+    >
   </a>
   <!-- <span class="middle">
     <mat-icon class="shopping-icon" aria-hidden="false" aria-label="Cart">shopping_basket</mat-icon>
@@ -27,15 +29,22 @@
 
   <div class="delivery-payment">
     <mat-card class="delivery">
-      <div [ngStyle]="{
+      <div
+        [ngStyle]="{
           'border-bottom': deliveryChecked ? 'solid black 2px' : ''
-        }" style="
+        }"
+        style="
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-        ">
+        "
+      >
         <h1 class="header" style="align-self: center">Delivery</h1>
-        <mat-slide-toggle style="padding-top: 4px" [checked]="deliveryChecked" (change)="toggleDelivered()">
+        <mat-slide-toggle
+          style="padding-top: 4px"
+          [checked]="deliveryChecked"
+          (change)="toggleDelivered()"
+        >
         </mat-slide-toggle>
       </div>
       <div style="padding-top: 5px" *ngIf="deliveryChecked">
@@ -45,20 +54,41 @@
           <div class="row">
             <mat-form-field class="dual-input-row-left">
               <mat-label>First name</mat-label>
-              <input formControlName="firstName" matInput required placeholder="Eg. William" />
+              <input
+                formControlName="firstName"
+                matInput
+                required
+                placeholder="Eg. William"
+              />
             </mat-form-field>
             <mat-form-field class="dual-input-row-right">
               <mat-label>Last name</mat-label>
-              <input formControlName="lastName" matInput required placeholder="Eg. McMaster" />
+              <input
+                formControlName="lastName"
+                matInput
+                required
+                placeholder="Eg. McMaster"
+              />
             </mat-form-field>
           </div>
           <mat-form-field class="full-width">
             <mat-label>Email Address</mat-label>
-            <input type="email" formControlName="email" matInput required placeholder="Eg. william@mail.com" />
+            <input
+              type="email"
+              formControlName="email"
+              matInput
+              required
+              placeholder="Eg. william@mail.com"
+            />
           </mat-form-field>
           <mat-form-field class="full-width">
             <mat-label>Address</mat-label>
-            <input formControlName="address" matInput required placeholder="Eg. 1280 Main St West" />
+            <input
+              formControlName="address"
+              matInput
+              required
+              placeholder="Eg. 1280 Main St West"
+            />
           </mat-form-field>
           <!-- <mat-form-field class="full-width">
             <mat-label>Address 2</mat-label>
@@ -67,7 +97,12 @@
           <div class="row">
             <mat-form-field class="triple-input-row-left">
               <mat-label>City</mat-label>
-              <input formControlName="city" matInput required placeholder="Eg. Hamilton" />
+              <input
+                formControlName="city"
+                matInput
+                required
+                placeholder="Eg. Hamilton"
+              />
             </mat-form-field>
             <!-- <mat-form-field class="triple-input-row-mid">
               <mat-label>Province</mat-label>
@@ -76,15 +111,24 @@
             <mat-form-field class="triple-input-row-mid">
               <mat-label>Province</mat-label>
               <mat-select required formControlName="province">
-                <mat-option *ngFor="let province of provinces" [value]="province.value">
+                <mat-option
+                  *ngFor="let province of provinces"
+                  [value]="province.value"
+                >
                   {{ province.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field class="triple-input-row-right">
               <mat-label>Postal Code</mat-label>
-              <input formControlName="postalCode" matInput required #postalCode maxlength="7"
-                placeholder="Eg. L8S 4L8" />
+              <input
+                formControlName="postalCode"
+                matInput
+                required
+                #postalCode
+                maxlength="7"
+                placeholder="Eg. L8S 4L8"
+              />
               <mat-hint align="end">{{ postalCode.value.length }} / 7</mat-hint>
             </mat-form-field>
           </div>
@@ -95,43 +139,50 @@
         </div> -->
       </div>
     </mat-card>
-    <div class="payment">
-      <mat-card class="border">
-        <div>
-          <h1 class="header" style="align-self: center">
-            Credit Card Information
-          </h1>
-        </div>
-        <div style="padding-top: 5px">
-          <div class="delivery-form" [formGroup]="cardForm">
-            <mat-form-field class="credit-card-number">
-              <mat-label><b>Credit Card Number</b></mat-label>
+    <mat-card class="delivery">
+      <div>
+        <h1 class="header" style="align-self: center">
+          Credit Card Information
+        </h1>
+      </div>
+      <div style="padding-top: 5px">
+        <div class="delivery-form" [formGroup]="cardForm">
+          <div class="row">
+            <mat-form-field class="full-width">
+              <mat-label>Credit Card Number</mat-label>
               <input matInput required formControlName="cardNumber" />
             </mat-form-field>
-            <mat-form-field>
-              <mat-label><b>Month</b></mat-label>
+            <mat-form-field class="triple-input-row-left">
+              <mat-label>Month</mat-label>
               <mat-select formControlName="month">
                 <mat-option *ngFor="let month of months" [value]="month.value">
                   {{ month.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field>
-              <mat-label><b>Year</b></mat-label>
+            <mat-form-field class="triple-input-row-mid">
+              <mat-label>Year</mat-label>
               <mat-select formControlName="year">
                 <mat-option *ngFor="let year of years" [value]="year.value">
                   {{ year.viewValue }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field>
-              <mat-label><b>CVV</b></mat-label>
-              <input type="number" minlength="3" maxlength="3" matInput required formControlName="CVV" />
+            <mat-form-field class="triple-input-row-right">
+              <mat-label>CVV</mat-label>
+              <input
+                type="number"
+                minlength="3"
+                maxlength="3"
+                matInput
+                required
+                formControlName="CVV"
+              />
             </mat-form-field>
           </div>
         </div>
-      </mat-card>
-    </div>
+      </div>
+    </mat-card>
   </div>
 
   <mat-card class="costs">
@@ -154,15 +205,18 @@
       <h2 class="summary-font">Delivery Fee:</h2>
       <h2 class="summary-font">${{ deliveryCost }}</h2>
     </div>
-    <div class="total-row" style="border-top: solid black 2px; padding-top: 10%">
+    <div
+      class="total-row"
+      style="border-top: solid black 2px; padding-top: 10%"
+    >
       <h2 class="total-font">Total:</h2>
       <h2 class="total-font">
         ${{
-        (
-        getCartTotal() +
-        (deliveryChecked ? deliveryCost : 0) +
-        getCartTotal() * 0.13
-        ).toFixed(2)
+          (
+            getCartTotal() +
+            (deliveryChecked ? deliveryCost : 0) +
+            getCartTotal() * 0.13
+          ).toFixed(2)
         }}
       </h2>
     </div>
@@ -170,12 +224,25 @@
 </div>
 
 <div style="text-align: center; padding: 1rem 0">
-  <button [routerLink]="['/cart']" mat-raised-button class="cancel" color="warn">
+  <button
+    [routerLink]="['/cart']"
+    mat-raised-button
+    class="cancel"
+    color="warn"
+  >
     Return to cart
   </button>
-  <span matTooltip="You must fill out all required sections." [matTooltipDisabled]="!checkValid()">
-    <button [disabled]="checkValid()" [routerLink]="['/confirmation']" mat-raised-button class="checkout-button"
-      color="primary">
+  <span
+    matTooltip="You must fill out all required sections."
+    [matTooltipDisabled]="!checkValid()"
+  >
+    <button
+      [disabled]="checkValid()"
+      [routerLink]="['/confirmation']"
+      mat-raised-button
+      class="checkout-button"
+      color="primary"
+    >
       Pay now
     </button>
   </span>
