@@ -49,7 +49,7 @@ export class MenuComponent implements OnInit {
       description:
         'Lamb meat grilled to perfection and topped with cheese, onions, tomatoes and lettuce.',
       calories: 876,
-      tags: [],
+      tags: [FoodTag.Halal],
       category: FoodCategory.Burger,
       imageUrl: './assets/images/menuItems/MeatBurger.jpg',
       isPopular: true,
@@ -73,7 +73,7 @@ export class MenuComponent implements OnInit {
       description:
         'Crispy calamari served with Siracha cream sauce.',
       calories: 650,
-      tags: [],
+      tags: [FoodTag.Halal],
       category: FoodCategory.Seafood,
       imageUrl: './assets/images/menuItems/calamari.jpg',
       isPopular: false,
@@ -109,7 +109,7 @@ export class MenuComponent implements OnInit {
       description:
         'We prepare the shrimp as a light appetizer with green apple, charred scallions, smoked paprika and sesame seeds.',
       calories: 450,
-      tags: [],
+      tags: [FoodTag.Halal],
       category: FoodCategory.Seafood,
       imageUrl: './assets/images/menuItems/GrilledShrimp.png',
       isPopular: true,
@@ -132,7 +132,7 @@ export class MenuComponent implements OnInit {
       price: 21.99,
       description: 'Our sweet-tart juice complements the rich scallops.',
       calories: 1000,
-      tags: [],
+      tags: [FoodTag.Halal],
       category: FoodCategory.Seafood,
       imageUrl: './assets/images/menuItems/scallop.png',
       isPopular: false,

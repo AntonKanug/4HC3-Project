@@ -22,6 +22,7 @@ export class CheckoutComponent implements OnInit {
   cartItems: MenuItem[] = [];
 
   deliveryChecked = false;
+  deliverytime = '50 minutes';
 
   constructor(private cartItemService: CartItemsService) {}
 
