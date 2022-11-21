@@ -17,8 +17,8 @@ export enum FoodTag {
 }
 
 export enum FoodCategory {
+  Appetizers = 'Appetizers',
+  Salad = 'Salads',
   Burger = 'Burgers',
   Seafood = 'Seafood',
-  Salad = 'Salads',
-  Appetizers = 'Appetizers',
 }

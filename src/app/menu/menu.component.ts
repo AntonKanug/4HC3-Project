@@ -32,18 +32,6 @@ export class MenuComponent implements OnInit {
   sortOptions: string[] = Object.values(SortOption);
 
   allItems: MenuItem[] = [
-    // {
-    //   name: 'Shiba Inu',
-    //   price: 99.99,
-    //   description:
-    //     'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.',
-    //   calories: 350,
-    //   tags: [FoodTag.Halal, FoodTag.Vegetarian],
-    //   category: FoodCategory.Burger,
-    //   imageUrl: './assets/images/menuItems/shiba2.jpg',
-    //   isPopular: true,
-    //   isFavorite: true,
-    // },
     {
       name: 'Apple Bowl',
       price: 9.99,
@@ -53,6 +41,18 @@ export class MenuComponent implements OnInit {
       category: FoodCategory.Salad,
       imageUrl: './assets/images/menuItems/apple.jpg',
       isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Cheeseburger',
+      price: 14.99,
+      description:
+        'Lamb meat grilled to perfection and topped with cheese, onions, tomatoes and lettuce.',
+      calories: 876,
+      tags: [],
+      category: FoodCategory.Burger,
+      imageUrl: './assets/images/menuItems/MeatBurger.jpg',
+      isPopular: true,
       isFavorite: false,
     },
     {
@@ -68,6 +68,30 @@ export class MenuComponent implements OnInit {
       isFavorite: false,
     },
     {
+      name: 'Crispy Calamari',
+      price: 11.49,
+      description:
+        'Crispy calamari served with Siracha cream sauce.',
+      calories: 650,
+      tags: [],
+      category: FoodCategory.Seafood,
+      imageUrl: './assets/images/menuItems/calamari.jpg',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Chicken Burger',
+      price: 12.99,
+      description:
+        'Our crispy Halal chicken with lettuce and our speciality buttermilk sauce.',
+      calories: 640,
+      tags: [FoodTag.Halal],
+      category: FoodCategory.Burger,
+      imageUrl: './assets/images/menuItems/ChickenBurger.jpg',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
       name: 'Stir-fried Cashew',
       price: 19.99,
       description:
@@ -77,22 +101,10 @@ export class MenuComponent implements OnInit {
       category: FoodCategory.Salad,
       imageUrl: './assets/images/menuItems/friedcashew.jpg',
       isPopular: false,
-      isFavorite: true,
-    },
-    {
-      name: 'Apple Tart',
-      price: 10.99,
-      description:
-        'Loaded with fresh apples and baked to a perfect golden brown',
-      calories: 348,
-      tags: [FoodTag.Vegetarian],
-      category: FoodCategory.Appetizers,
-      imageUrl: './assets/images/menuItems/AppleTart.png',
-      isPopular: true,
       isFavorite: false,
     },
     {
-      name: 'Grilled Shrimp with Apple and Charred Scallions',
+      name: 'Grilled Shrimp',
       price: 13.99,
       description:
         'We prepare the shrimp as a light appetizer with green apple, charred scallions, smoked paprika and sesame seeds.',
@@ -104,7 +116,19 @@ export class MenuComponent implements OnInit {
       isFavorite: false,
     },
     {
-      name: 'Scallops with Apple Pan Sauce',
+      name: 'Veggie Burger',
+      price: 13.99,
+      description:
+        'A healthy beyond meat matty with tomatoes, lettuce and onions.',
+      calories: 600,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Burger,
+      imageUrl: './assets/images/menuItems/VeggieBurger.jpg',
+      isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Apple Pan Scallops',
       price: 21.99,
       description: 'Our sweet-tart juice complements the rich scallops.',
       calories: 1000,
@@ -112,6 +136,18 @@ export class MenuComponent implements OnInit {
       category: FoodCategory.Seafood,
       imageUrl: './assets/images/menuItems/scallop.png',
       isPopular: false,
+      isFavorite: false,
+    },
+    {
+      name: 'Apple Tart',
+      price: 10.99,
+      description:
+        'Loaded with fresh apples and baked to a perfect golden brown',
+      calories: 348,
+      tags: [FoodTag.Vegetarian],
+      category: FoodCategory.Appetizers,
+      imageUrl: './assets/images/menuItems/AppleTart.png',
+      isPopular: true,
       isFavorite: false,
     },
   ];
